@@ -1,0 +1,82 @@
+@import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&display=swap');
+@import url('https://api.fontshare.com/v2/css?f[]=clash-display@400,500,600,700&f[]=geist@400,500,600&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  color-scheme: dark;
+}
+
+* {
+  -webkit-font-smoothing: antialiased;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background-color: #0B0F19;
+  color: #E5E7EB;
+  font-family: "Geist", "Space Grotesk", system-ui, sans-serif;
+  overflow-x: hidden;
+}
+
+/* Light mode overrides */
+.light body,
+body.light {
+  background-color: #F4F5FB;
+  color: #1A1A2E;
+}
+
+::-webkit-scrollbar {
+  width: 9px;
+  height: 9px;
+}
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+::-webkit-scrollbar-thumb {
+  background: rgba(124, 58, 237, 0.45);
+  border-radius: 99px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: rgba(124, 58, 237, 0.7);
+}
+
+@layer components {
+  .glass {
+    @apply bg-white/[0.04] backdrop-blur-xl border border-white/[0.08];
+  }
+  .glass-strong {
+    @apply bg-white/[0.06] backdrop-blur-2xl border border-white/[0.10];
+  }
+  .gradient-text {
+    @apply bg-gradient-to-r from-primary-400 via-glow to-secondary-400 bg-clip-text text-transparent;
+  }
+  .gradient-border {
+    position: relative;
+    background: linear-gradient(#141A2A, #141A2A) padding-box,
+      linear-gradient(135deg, rgba(124,58,237,0.6), rgba(6,182,212,0.4)) border-box;
+    border: 1px solid transparent;
+  }
+  .btn-primary {
+    @apply relative inline-flex items-center justify-center gap-2 rounded-2xl px-6 py-3 font-medium text-white
+      bg-gradient-to-r from-primary-600 to-primary-500 shadow-glow
+      transition-all duration-300 hover:shadow-[0_0_50px_-6px_rgba(139,92,246,0.7)] hover:-translate-y-0.5;
+  }
+  .btn-ghost {
+    @apply inline-flex items-center justify-center gap-2 rounded-2xl px-6 py-3 font-medium
+      text-white/90 glass hover:bg-white/[0.08] transition-all duration-300;
+  }
+}
+
+.text-balance {
+  text-wrap: balance;
+}
+
+.noise {
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='3'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.4'/%3E%3C/svg%3E");
+}
