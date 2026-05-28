@@ -80,3 +80,107 @@ body.light {
 .noise {
   background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='3'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.4'/%3E%3C/svg%3E");
 }
+
+/* ============================================================
+   LIGHT MODE
+   The whole UI is built with dark-first utilities (text-white,
+   bg-white/x, glass…). Rather than rewriting every component,
+   we override those utilities when <html class="light"> is set.
+   ============================================================ */
+html.light {
+  color-scheme: light;
+}
+html.light body {
+  background-color: #F4F5FB;
+  color: #1A1A2E;
+}
+
+/* surfaces / cards */
+html.light .glass {
+  background-color: rgba(255, 255, 255, 0.7);
+  border-color: rgba(20, 20, 50, 0.08);
+  box-shadow: 0 1px 3px rgba(20, 20, 50, 0.04);
+}
+html.light .glass-strong {
+  background-color: rgba(255, 255, 255, 0.9);
+  border-color: rgba(20, 20, 50, 0.10);
+}
+html.light .gradient-border {
+  background: linear-gradient(#ffffff, #ffffff) padding-box,
+    linear-gradient(135deg, rgba(124,58,237,0.5), rgba(6,182,212,0.35)) border-box;
+}
+
+/* page + soft backgrounds */
+html.light .bg-bg,
+html.light .bg-bg-soft,
+html.light .bg-bg-card,
+html.light .bg-bg-elevated {
+  background-color: #FFFFFF !important;
+}
+html.light .bg-bg\/70,
+html.light .bg-bg-soft\/80,
+html.light .bg-bg-soft\/70 {
+  background-color: rgba(255, 255, 255, 0.8) !important;
+}
+
+/* text colors: map white-ish to dark-ish */
+html.light .text-white { color: #1A1A2E !important; }
+html.light .text-white\/90 { color: rgba(26,26,46,0.92) !important; }
+html.light .text-white\/80 { color: rgba(26,26,46,0.82) !important; }
+html.light .text-white\/75 { color: rgba(26,26,46,0.78) !important; }
+html.light .text-white\/70 { color: rgba(26,26,46,0.72) !important; }
+html.light .text-white\/60 { color: rgba(26,26,46,0.62) !important; }
+html.light .text-white\/55 { color: rgba(26,26,46,0.58) !important; }
+html.light .text-white\/50 { color: rgba(26,26,46,0.52) !important; }
+html.light .text-white\/45 { color: rgba(26,26,46,0.48) !important; }
+html.light .text-white\/40 { color: rgba(26,26,46,0.45) !important; }
+html.light .text-white\/30 { color: rgba(26,26,46,0.38) !important; }
+
+/* subtle fills (chips, hover, inputs) */
+html.light .bg-white\/5,
+html.light .bg-white\/\[0\.03\],
+html.light .bg-white\/\[0\.04\],
+html.light .bg-white\/\[0\.02\] {
+  background-color: rgba(20, 20, 50, 0.04) !important;
+}
+html.light .bg-white\/\[0\.06\],
+html.light .bg-white\/10 {
+  background-color: rgba(20, 20, 50, 0.06) !important;
+}
+
+/* borders */
+html.light .border-white\/5,
+html.light .border-white\/10,
+html.light .border-white\/\[0\.06\],
+html.light .border-white\/\[0\.08\],
+html.light .border-white\/\[0\.04\] {
+  border-color: rgba(20, 20, 50, 0.10) !important;
+}
+
+/* sidebar/topbar translucent backgrounds */
+html.light .backdrop-blur-xl,
+html.light .backdrop-blur-2xl {
+  background-color: rgba(255, 255, 255, 0.75);
+}
+
+/* keep gradient text vivid on light */
+html.light .gradient-text {
+  filter: saturate(1.1);
+}
+
+/* inputs */
+html.light input,
+html.light textarea,
+html.light select {
+  color: #1A1A2E;
+}
+html.light input::placeholder,
+html.light textarea::placeholder {
+  color: rgba(26,26,46,0.4);
+}
+
+/* Background grid + blobs tuning for light mode */
+html.light .bg-grid-pattern {
+  opacity: 0.4;
+  filter: invert(1);
+}
