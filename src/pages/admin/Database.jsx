@@ -59,17 +59,17 @@ export default function AdminDatabase() {
               </tr>
             </thead>
             <tbody>
-              {tables.map((t, i) => (
-                <motion.tr key={t.name} initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: i * 0.04 }}
+              {tables.map((tbl, i) => (
+                <motion.tr key={tbl.name} initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: i * 0.04 }}
                   className="border-b border-white/[0.04] hover:bg-white/[0.03]">
                   <td className="px-3 py-3.5">
                     <span className="inline-flex items-center gap-2 font-mono text-white/80">
-                      <Table2 className="h-4 w-4 text-primary-400" />{t.name}
+                      <Table2 className="h-4 w-4 text-primary-400" />{tbl.name}
                     </span>
                   </td>
-                  <td className="px-3 py-3.5 text-right text-white/70">{t.rows.toLocaleString()}</td>
-                  <td className="px-3 py-3.5 text-right text-white/50">{t.size}</td>
-                  <td className="px-3 py-3.5 text-right"><Badge color="green">{t.growth}</Badge></td>
+                  <td className="px-3 py-3.5 text-right text-white/70">{tbl.rows.toLocaleString()}</td>
+                  <td className="px-3 py-3.5 text-right text-white/50">{tbl.size}</td>
+                  <td className="px-3 py-3.5 text-right"><Badge color="green">{tbl.growth}</Badge></td>
                 </motion.tr>
               ))}
             </tbody>

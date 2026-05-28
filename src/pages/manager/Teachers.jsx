@@ -49,18 +49,18 @@ export default function ManagerTeachers() {
       </div>
 
       <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-4">
-        {teacherPerformance.map((t, i) => (
-          <motion.div key={t.id} initial={{ opacity: 0, y: 16 }} animate={{ opacity: 1, y: 0 }}
+        {teacherPerformance.map((tch, i) => (
+          <motion.div key={tch.id} initial={{ opacity: 0, y: 16 }} animate={{ opacity: 1, y: 0 }}
             transition={{ delay: i * 0.05 }} className="glass rounded-2xl p-5 text-center">
-            <Avatar initials={t.avatar} size="lg" ring />
-            <h3 className="mt-3 font-medium text-white">{t.name}</h3>
+            <Avatar initials={tch.avatar} size="lg" ring />
+            <h3 className="mt-3 font-medium text-white">{tch.name}</h3>
             <div className="mt-1 inline-flex items-center gap-1 text-sm text-amber-400">
-              <Star className="h-3.5 w-3.5 fill-amber-400" />{t.rating}
+              <Star className="h-3.5 w-3.5 fill-amber-400" />{tch.rating}
             </div>
             <div className="mt-4 grid grid-cols-3 gap-2 border-t border-white/[0.06] pt-4 text-center">
-              <div><div className="text-sm font-semibold text-white">{t.students}</div><div className="text-[10px] text-white/40">{t("pages.manager.teachers.students")}</div></div>
-              <div><div className="text-sm font-semibold text-white">{t.groups}</div><div className="text-[10px] text-white/40">{t("pages.manager.teachers.groups")}</div></div>
-              <div><div className="text-sm font-semibold text-secondary-400">{t.avgBand}</div><div className="text-[10px] text-white/40">{t("pages.manager.teachers.band")}</div></div>
+              <div><div className="text-sm font-semibold text-white">{tch.students}</div><div className="text-[10px] text-white/40">{t("pages.manager.teachers.students")}</div></div>
+              <div><div className="text-sm font-semibold text-white">{tch.groups}</div><div className="text-[10px] text-white/40">{t("pages.manager.teachers.groups")}</div></div>
+              <div><div className="text-sm font-semibold text-secondary-400">{tch.avgBand}</div><div className="text-[10px] text-white/40">{t("pages.manager.teachers.band")}</div></div>
             </div>
           </motion.div>
         ))}

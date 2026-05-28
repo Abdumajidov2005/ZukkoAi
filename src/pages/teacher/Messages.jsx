@@ -28,7 +28,7 @@ export default function TeacherMessages() {
 
   function send() {
     if (!draft.trim()) return;
-    setThreads((t) => ({ ...t, [activeId]: [...(t[activeId] || []), { from: "me", text: draft, time: "now" }] }));
+    setThreads((prev) => ({ ...prev, [activeId]: [...(prev[activeId] || []), { from: "me", text: draft, time: "now" }] }));
     setDraft("");
   }
 
