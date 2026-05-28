@@ -4,6 +4,7 @@ import { motion } from "framer-motion";
 import { Mail, Lock, Eye, EyeOff, ArrowRight, Loader2, Zap } from "lucide-react";
 import AuthLayout from "../../components/layout/AuthLayout";
 import { useAuthStore } from "../../store/authStore";
+import { useLanguage } from "../../hooks/useLanguage";
 import { ROLE_HOME } from "../../data/mockData";
 
 const DEMO = [
@@ -17,6 +18,7 @@ export default function Login() {
   const navigate = useNavigate();
   const location = useLocation();
   const login = useAuthStore((s) => s.login);
+  const { t } = useLanguage();
 
   const [form, setForm] = useState({ email: "", password: "" });
   const [show, setShow] = useState(false);
@@ -41,14 +43,14 @@ export default function Login() {
 
   return (
     <AuthLayout
-      title="Welcome back"
-      subtitle="Log in to continue your learning journey."
-      footer={<>Don't have an account? <Link to="/register" className="text-primary-400 hover:text-primary-300 font-medium">Sign up</Link></>}
+      title={t("auth.welcomeBack")}
+      subtitle={t("auth.loginSubtitle")}
+      footer={<>{t("auth.noAccount")} <Link to="/register" className="text-primary-400 hover:text-primary-300 font-medium">{t("common.signUp")}</Link></>}
     >
       <form onSubmit={submit} className="space-y-4">
-        <InputField icon={Mail} type="email" placeholder="Email address" value={form.email}
+        <InputField icon={Mail} type="email" placeholder={t("common.email")} value={form.email}
           onChange={(v) => setForm({ ...form, email: v })} />
-        <InputField icon={Lock} type={show ? "text" : "password"} placeholder="Password" value={form.password}
+        <InputField icon={Lock} type={show ? "text" : "password"} placeholder={t("common.password")} value={form.password}
           onChange={(v) => setForm({ ...form, password: v })}
           trailing={
             <button type="button" onClick={() => setShow((s) => !s)} className="text-white/40 hover:text-white/70">
@@ -59,9 +61,9 @@ export default function Login() {
         <div className="flex items-center justify-between text-sm">
           <label className="flex items-center gap-2 text-white/50 cursor-pointer">
             <input type="checkbox" className="rounded border-white/20 bg-white/5 text-primary-500 focus:ring-0" />
-            Remember me
+            {t("auth.rememberMe")}
           </label>
-          <Link to="/forgot-password" className="text-primary-400 hover:text-primary-300">Forgot password?</Link>
+          <Link to="/forgot-password" className="text-primary-400 hover:text-primary-300">{t("auth.forgotPassword")}</Link>
         </div>
 
         {error && (
@@ -71,14 +73,14 @@ export default function Login() {
         )}
 
         <button type="submit" disabled={loading} className="btn-primary w-full disabled:opacity-60">
-          {loading ? <Loader2 className="h-4 w-4 animate-spin" /> : <>Log in <ArrowRight className="h-4 w-4" /></>}
+          {loading ? <Loader2 className="h-4 w-4 animate-spin" /> : <>{t("common.signIn")} <ArrowRight className="h-4 w-4" /></>}
         </button>
       </form>
 
       {/* Demo accounts */}
       <div className="mt-6">
         <div className="flex items-center gap-2 text-xs text-white/40">
-          <Zap className="h-3.5 w-3.5 text-primary-400" /> Quick demo login (password: 1234)
+          <Zap className="h-3.5 w-3.5 text-primary-400" /> {t("auth.quickLogin")} (1234)
         </div>
         <div className="mt-3 grid grid-cols-2 gap-2">
           {DEMO.map((d) => (
@@ -88,7 +90,7 @@ export default function Login() {
               onClick={() => quickFill(d.email)}
               className="rounded-xl glass px-3 py-2 text-left text-xs hover:border-primary-500/40 transition-colors"
             >
-              <div className="font-medium text-white">{d.role}</div>
+              <div className="font-medium text-white">{t(`roles.${d.role.toLowerCase()}`)}</div>
               <div className="text-white/40 truncate">{d.email}</div>
             </button>
           ))}

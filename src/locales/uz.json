@@ -1,0 +1,769 @@
+{
+  "common": {
+    "appName": "ZUKKO AI",
+    "login": "Kirish",
+    "logout": "Chiqish",
+    "register": "Ro‘yxatdan o‘tish",
+    "getStarted": "Boshlash",
+    "signIn": "Kirish",
+    "signUp": "Ro‘yxatdan o‘tish",
+    "email": "Email",
+    "password": "Parol",
+    "fullName": "To‘liq ism",
+    "search": "Qidirish…",
+    "save": "Saqlash",
+    "saveChanges": "O‘zgarishlarni saqlash",
+    "cancel": "Bekor qilish",
+    "create": "Yaratish",
+    "edit": "Tahrirlash",
+    "delete": "O‘chirish",
+    "download": "Yuklab olish",
+    "export": "Eksport",
+    "viewAll": "Barchasini ko‘rish",
+    "back": "Orqaga",
+    "next": "Keyingi",
+    "previous": "Oldingi",
+    "finish": "Yakunlash",
+    "loading": "Yuklanmoqda…",
+    "all": "Barchasi",
+    "status": "Holat",
+    "actions": "Amallar",
+    "name": "Ism",
+    "role": "Rol",
+    "date": "Sana",
+    "newKey": "Yangi kalit",
+    "language": "Til"
+  },
+  "nav": {
+    "features": "Imkoniyatlar",
+    "pricing": "Narxlar",
+    "testimonials": "Sharhlar",
+    "faq": "Savol-javob",
+    "contact": "Bog‘lanish"
+  },
+  "roles": {
+    "student": "O‘quvchi",
+    "teacher": "O‘qituvchi",
+    "manager": "Menejer",
+    "admin": "Administrator"
+  },
+  "hero": {
+    "badge": "Sun’iy intellekt bilan ingliz tili",
+    "title1": "Ingliz tilini",
+    "title2": "AI bilan o‘rganing",
+    "subtitle": "IELTS band bahosini bir zumda oling, grammatik xatolarni to‘g‘rilang va 24/7 shaxsiy AI repetitoringizdan foydalaning. Aqlliroq o‘rganing, yuqoriroq ball oling.",
+    "startLearning": "O‘rganishni boshlash",
+    "tryChecker": "AI tekshiruvni sinab ko‘rish",
+    "bandScore": "Band bahosi",
+    "grammarFixed": "Grammatika to‘g‘rilandi",
+    "aiTutor": "AI repetitor",
+    "bandProgression": "Band o‘sishi"
+  },
+  "auth": {
+    "welcomeBack": "Xush kelibsiz",
+    "loginSubtitle": "O‘qishni davom ettirish uchun tizimga kiring.",
+    "registerTitle": "Hisob yarating",
+    "registerSubtitle": "Bugun AI bilan ingliz tilini o‘rganishni boshlang.",
+    "forgotTitle": "Parolni tiklash",
+    "forgotSubtitle": "Emailingizni kiriting, biz tiklash havolasini yuboramiz.",
+    "noAccount": "Hisobingiz yo‘qmi?",
+    "haveAccount": "Hisobingiz bormi?",
+    "forgotPassword": "Parolni unutdingizmi?",
+    "rememberMe": "Meni eslab qol",
+    "quickLogin": "Tezkor demo kirish",
+    "sendResetLink": "Tiklash havolasini yuborish",
+    "resetSent": "Pochtangizni tekshiring",
+    "resetSentDesc": "Parolni tiklash havolasini emailingizga yubordik.",
+    "backToLogin": "Kirishga qaytish",
+    "iAmA": "Men",
+    "invalidCredentials": "Email yoki parol noto‘g‘ri.",
+    "passwordMin": "Parol kamida 4 ta belgidan iborat bo‘lishi kerak."
+  },
+  "sidebar": {
+    "student": {
+      "overview": "Bosh sahifa",
+      "aiChecker": "AI yozma tekshiruvi",
+      "tests": "IELTS testlari",
+      "vocabulary": "Lug‘at",
+      "speaking": "Gapirish",
+      "progress": "Yutuqlar",
+      "homework": "Uy vazifasi",
+      "leaderboard": "Reyting",
+      "profile": "Profil"
+    },
+    "teacher": {
+      "students": "O‘quvchilar",
+      "groups": "Guruhlar",
+      "essays": "Insholar",
+      "assignments": "Topshiriqlar",
+      "statistics": "Statistika",
+      "messages": "Xabarlar",
+      "attendance": "Davomat"
+    },
+    "manager": {
+      "analytics": "Tahlil",
+      "teachers": "O‘qituvchilar",
+      "groups": "Guruhlar",
+      "payments": "To‘lovlar",
+      "courses": "Kurslar",
+      "reports": "Hisobotlar"
+    },
+    "admin": {
+      "users": "Foydalanuvchilar",
+      "roles": "Rollar",
+      "permissions": "Ruxsatlar",
+      "aiSettings": "AI sozlamalari",
+      "subscription": "Obuna",
+      "analytics": "Tahlil",
+      "database": "Ma’lumotlar bazasi",
+      "logs": "Loglar",
+      "api": "API boshqaruvi"
+    }
+  },
+  "tutor": {
+    "title": "AI repetitor",
+    "subtitle": "Doim yordamga tayyor",
+    "placeholder": "Ingliz tili haqida istalgan narsani so‘rang…",
+    "greeting": "Salom! Men sizning AI ingliz tili repetitoringizman. Sizga qanday yordam bera olaman?"
+  },
+  "topbar": {
+    "notifications": "Bildirishnomalar",
+    "markAllRead": "Barchasini o‘qilgan deb belgilash",
+    "noNotifications": "Yangi bildirishnoma yo‘q"
+  },
+  "features": {
+    "badge": "Sizga kerak bo'lgan hammasi",
+    "title1": "Bitta platforma.",
+    "title2": "Yettita AI dvigatel.",
+    "subtitle": "Birinchi darajani aniqlash testidan to maqsadli band'gacha — ingliz tili sayohatingizning har bir qismi maxsus AI bilan quvvatlanadi.",
+    "overallBand": "Umumiy Band",
+    "items": {
+      "essayChecker": {
+        "title": "AI insho tekshiruvi",
+        "desc": "Istalgan IELTS inshoni yuboring va bir zumda band bahosini oling — task, izchillik, leksika va grammatika bo'yicha tahlil, ustiga to'liq qayta yozilgan namunaviy javob bilan."
+      },
+      "grammar": {
+        "title": "Grammatika tuzatish",
+        "desc": "Har bir xato kontekstda belgilanadi, tushuntiriladi va tuzatiladi."
+      },
+      "ielts": {
+        "title": "IELTS amaliyoti",
+        "desc": "Reading, Listening, Writing va Speaking bo'yicha to'liq sinov testlari."
+      },
+      "speaking": {
+        "title": "Nutq tahlili",
+        "desc": "Javoblaringizni yozing; AI ravonlik, talaffuz va diapazonni baholaydi."
+      },
+      "progress": {
+        "title": "Yutuqlarni kuzatish",
+        "desc": "Har bir ko'nikma bo'yicha band'ingiz haftadan-haftaga o'sishini kuzating."
+      },
+      "tutor": {
+        "title": "24/7 AI repetitor",
+        "desc": "Cho'ntagingizdagi shaxsiy ingliz tili repetitori. Istalgan narsani so'rang — tushuntirishlar, mashqlar va zaif tomonlaringizga moslangan reja oling."
+      },
+      "vocab": {
+        "title": "Lug'at tahlilchisi",
+        "desc": "Kuchliroq va akademikroq so'z tanlovlarini bir zumda kashf eting."
+      }
+    }
+  },
+  "preview": {
+    "badge": "Hamma uchun yaratilgan",
+    "title1": "Har bir rol uchun",
+    "title2": "alohida panel.",
+    "items": {
+      "grading": {
+        "title": "Bir zumda AI baholash",
+        "desc": "Insholar o'qituvchi ochishidan oldin oldindan baholanadi."
+      },
+      "analytics": {
+        "title": "Jonli tahlil",
+        "desc": "Band tendentsiyalari, davomat va natijalar real vaqtda."
+      },
+      "gamified": {
+        "title": "O'yinlashtirilgan o'rganish",
+        "desc": "Streaklar, nishonlar va motivatsiya beruvchi reyting."
+      }
+    },
+    "welcome": "Xush kelibsiz, Aziza",
+    "latestEssay": "Oxirgi insho",
+    "bandScore": "Band bahosi",
+    "skills": "Ko'nikmalar",
+    "weeklyActivity": "Haftalik faollik"
+  },
+  "testimonials": {
+    "badge": "O'quvchilar sevgan",
+    "title1": "Natijalar",
+    "title2": "o'zi gapiradi",
+    "items": [
+      {
+        "text": "AI fikr-mulohazasi o'qituvchim sezmagan grammatik xatolarni topdi. Ikki oyda to'liq bir band'ga ko'tarildim.",
+        "role": "Band 6.0 → 7.5"
+      },
+      {
+        "text": "Har bir insho uchun bir zumda qayta yozilgan namunaviy javob olish yozishni o'rganishimni butunlay o'zgartirdi.",
+        "role": "Universitetga abituriyent"
+      },
+      {
+        "text": "Men uy vazifasi beraman, ZUKKO esa hammasini oldindan baholaydi. Endi vaqtimni baholashga emas, haqiqiy fikr-mulohazaga sarflayman.",
+        "role": "IELTS o'qituvchisi"
+      }
+    ]
+  },
+  "pricing": {
+    "badge": "Oddiy narxlar",
+    "title1": "Bepul boshlang.",
+    "title2": "Tayyor bo'lganda kengaytiring.",
+    "subtitle": "Yashirin to'lovlar yo'q. Istalgan vaqtda bekor qiling.",
+    "mostPopular": "Eng mashhur",
+    "perMonth": "oy",
+    "perForever": "abadiy",
+    "plans": {
+      "starter": {
+        "name": "Starter",
+        "tagline": "AI insho tekshiruvini sinab ko'ring",
+        "cta": "Bepul boshlash",
+        "features": [
+          "Oyiga 3 ta AI insho tekshiruvi",
+          "Asosiy grammatika tuzatish",
+          "Daraja aniqlash testi",
+          "Hamjamiyat reytingi"
+        ]
+      },
+      "pro": {
+        "name": "Pro Learner",
+        "tagline": "Jiddiy IELTS tayyorgarligi",
+        "cta": "Pro'ga o'tish",
+        "features": [
+          "Cheksiz AI insho tekshiruvi",
+          "To'liq IELTS sinov testlari",
+          "AI nutq baholash",
+          "24/7 AI repetitor chat",
+          "Batafsil band tahlili",
+          "Yutuqlar tahlili"
+        ]
+      },
+      "academy": {
+        "name": "Academy",
+        "tagline": "Maktablar va o'qituvchilar uchun",
+        "cta": "Biz bilan bog'lanish",
+        "features": [
+          "Pro'dagi barchasi",
+          "O'qituvchi paneli",
+          "Guruh boshqaruvi",
+          "Maxsus test yaratuvchi",
+          "O'quvchi tahlili",
+          "Ustuvor qo'llab-quvvatlash"
+        ]
+      }
+    }
+  },
+  "faqSection": {
+    "badge": "Savollar",
+    "title1": "Ko'p beriladigan",
+    "title2": "savollar",
+    "items": [
+      {
+        "q": "AI band bahosi qanchalik aniq?",
+        "a": "ZUKKO AI minglab ekspert baholagan IELTS insholariga moslashtirilgan va Task Achievement, Coherence, Lexical Resource va Grammar bo'yicha rasmiy mezonlarda inson ekspertlaridan ±0.5 doirasida mos keladi."
+      },
+      {
+        "q": "AI faqat baho beradimi yoki tushuntiradimi?",
+        "a": "Ikkalasini ham. Har bir insho band tahlili, belgilangan grammatik va lug'aviy xatolar, qayta yozilgan namunaviy javob va amaliy fikr-mulohaza qaytaradi — shunda qanday yaxshilashni aniq bilasiz."
+      },
+      {
+        "q": "Maktabim ZUKKO AI'ni butun sinf uchun ishlata oladimi?",
+        "a": "Ha. Academy rejasi o'qituvchilarga uy vazifasi berish, insholarni tekshirish, maxsus testlar yaratish va har bir o'quvchining yutug'ini bitta joyda kuzatish uchun to'liq panel beradi."
+      },
+      {
+        "q": "Yozma ma'lumotlarim maxfiymi?",
+        "a": "Insholaringiz shifrlanadi va hech qachon uchinchi tomon modellarini o'rgatish uchun ishlatilmaydi. Adminlar ma'lumotlarni saqlash va AI provayder sozlamalarini tizim darajasida nazorat qiladi."
+      },
+      {
+        "q": "Qaysi imtihonlar qo'llab-quvvatlanadi?",
+        "a": "Biz IELTS Academic va General'ga e'tibor qaratamiz, grammatika, lug'at va nutq modullari TOEFL va umumiy ingliz tili ravonligiga ham yordam beradi."
+      }
+    ]
+  },
+  "contact": {
+    "title1": "Maqsadli band'ingizga",
+    "title2": "erishishga tayyormisiz?",
+    "subtitle": "ZUKKO AI'dan allaqachon foydalanayotgan minglab o'quvchilar va o'nlab maktablarga qo'shiling. Savolingiz bormi? Bizga xabar yuboring.",
+    "location": "Toshkent, O'zbekiston",
+    "sent": "Xabar yuborildi!",
+    "sentDesc": "24 soat ichida sizga javob beramiz.",
+    "fullName": "To'liq ism",
+    "message": "Xabar",
+    "messagePlaceholder": "Qanday yordam bera olamiz?",
+    "sendMessage": "Xabar yuborish"
+  },
+  "footer": {
+    "tagline": "Jiddiy o'quvchilar va ularni o'qitadigan maktablar uchun AI bilan quvvatlangan ingliz tili platformasi.",
+    "product": "Mahsulot",
+    "company": "Kompaniya",
+    "resources": "Resurslar",
+    "links": {
+      "features": "Imkoniyatlar",
+      "pricing": "Narxlar",
+      "aiChecker": "AI tekshiruv",
+      "dashboard": "Panel",
+      "about": "Biz haqimizda",
+      "blog": "Blog",
+      "careers": "Karyera",
+      "contact": "Bog'lanish",
+      "ieltsGuide": "IELTS qo'llanma",
+      "help": "Yordam markazi",
+      "community": "Hamjamiyat",
+      "apiDocs": "API hujjatlari"
+    },
+    "rights": "© 2026 ZUKKO AI. Barcha huquqlar himoyalangan.",
+    "privacy": "Maxfiylik",
+    "terms": "Shartlar",
+    "security": "Xavfsizlik"
+  },
+  "pages": {
+    "student": {
+      "overview": {
+        "welcome": "Xush kelibsiz, {{name}} 👋",
+        "subtitle": "Ingliz tili sayohatingiz qanday ketayotganini ko'ring.",
+        "checkEssay": "Insho tekshirish",
+        "currentBand": "Joriy Band",
+        "essaysChecked": "Tekshirilgan insholar",
+        "dayStreak": "Kunlik streak",
+        "testsTaken": "Topshirilgan testlar",
+        "bandProgression": "Band o'sishi",
+        "towardTarget": "7.0 maqsadingiz sari",
+        "onTrack": "Yo'lda",
+        "skillBreakdown": "Ko'nikmalar tahlili",
+        "strengthsGaps": "Kuchli va zaif tomonlaringiz",
+        "weeklyActivity": "Haftalik faollik",
+        "homework": "Uy vazifasi",
+        "viewAll": "Barchasini ko'rish",
+        "recentEssays": "So'nggi insholar",
+        "aiGraded": "AI baholagan",
+        "checking": "Tekshirilmoqda",
+        "late": "Kechikkan",
+        "due": "Muddati"
+      },
+      "aiChecker": {
+        "title": "AI yozma tekshiruvi",
+        "subtitle": "Bir zumda IELTS band bahosi va batafsil fikr-mulohaza oling.",
+        "prompt": "Insho mavzusi",
+        "yourEssay": "Sizning inshoyingiz",
+        "loadSample": "Namuna yuklash",
+        "words": "so'z",
+        "checkEssay": "Inshoni tekshirish",
+        "analyzing": "Inshoyingiz tahlil qilinmoqda…",
+        "overallBand": "Umumiy Band",
+        "feedback": "Fikr-mulohaza",
+        "grammar": "Grammatika",
+        "vocabulary": "Lug'at",
+        "modelAnswer": "Namunaviy javob",
+        "placeholder": "IELTS inshoyingizni shu yerga yozing yoki joylashtiring…",
+        "result": "Natija",
+        "emptyTitle": "Tayyor bo'lganda",
+        "emptyDesc": "Insho yozing va AI uni baholasin."
+      },
+      "tests": {
+        "title": "IELTS testlari",
+        "subtitle": "AI tomonidan bir zumda baholanadigan amaliy testlar.",
+        "available": "Mavjud testlar",
+        "completed": "Tugatilgan",
+        "avgScore": "O'rtacha ball",
+        "bestBand": "Eng yaxshi Band",
+        "startTest": "Testni boshlash",
+        "question": "Savol",
+        "of": "/",
+        "exit": "Chiqish",
+        "finish": "Yakunlash",
+        "complete": "Test tugadi!",
+        "correct": "To'g'ri",
+        "accuracy": "Aniqlik",
+        "estBand": "Taxminiy Band",
+        "retry": "Qayta",
+        "backToTests": "Testlarga qaytish",
+        "questions": "savol",
+        "min": "daq",
+        "taken": "topshirilgan"
+      },
+      "vocabulary": {
+        "title": "Lug'at to'plovchi",
+        "subtitle": "Takror-mashq fleshkartalari bilan akademik so'zlarni o'rganing.",
+        "aiCurated": "AI tanlagan",
+        "mastery": "O'zlashtirish jarayoni",
+        "words": "so'z",
+        "currentLevel": "Joriy daraja",
+        "flashcards": "Fleshkartalar",
+        "tapReveal": "Ma'noni ko'rish uchun bosing",
+        "flip": "Aylantirish",
+        "iKnow": "Bilaman",
+        "wordList": "So'zlar ro'yxati"
+      },
+      "speaking": {
+        "title": "Nutq amaliyoti",
+        "subtitle": "Javoblaringizni yozib oling va bir zumda AI talaffuz tahlilini oling.",
+        "aiEval": "AI baholash",
+        "selectTask": "Boshlash uchun nutq topshirig'ini tanlang",
+        "willScore": "AI ravonlik, talaffuz va grammatikani baholaydi.",
+        "listen": "Tinglash",
+        "question": "Savol",
+        "recording": "Yozilmoqda… to'xtatish uchun bosing",
+        "analyzed": "Yozuv tahlil qilindi",
+        "tapStart": "Yozishni boshlash uchun bosing",
+        "fluency": "Ravonlik",
+        "pronunciation": "Talaffuz",
+        "lexical": "Leksika",
+        "grammar": "Grammatika"
+      },
+      "progress": {
+        "title": "Mening yutuqlarim",
+        "subtitle": "IELTS sayohatingizni vaqt bo'yicha kuzating.",
+        "improved": "Bu yil +1.5 band",
+        "currentBand": "Joriy Band",
+        "targetBand": "Maqsadli Band",
+        "toGo": "0.5 qoldi",
+        "studyStreak": "O'qish streaki",
+        "hoursMonth": "Bu oydagi soatlar",
+        "bandProgression": "Band o'sishi",
+        "monthlyVsTarget": "Oylik o'rtacha vs maqsad",
+        "skillBreakdown": "Ko'nikmalar tahlili",
+        "strengthsGaps": "Kuchli va zaif tomonlar",
+        "studyMinutes": "O'qish daqiqalari",
+        "thisWeek": "Bu hafta",
+        "skillTargets": "Ko'nikma maqsadlari"
+      },
+      "homework": {
+        "title": "Uy vazifasi",
+        "subtitle": "O'qituvchingizdan topshiriqlar.",
+        "pending": "Kutilmoqda",
+        "overdue": "Kechikkan",
+        "completed": "Bajarilgan",
+        "nothingHere": "Bu yerda hech narsa yo'q",
+        "noHomework": "Bu turkumda uy vazifasi yo'q.",
+        "start": "Boshlash"
+      },
+      "leaderboard": {
+        "title": "Reyting",
+        "subtitle": "ZUKKO AI o'quvchilari bilan raqobatlashing.",
+        "weekly": "Haftalik",
+        "pts": "ball",
+        "fullRanking": "To'liq reyting",
+        "you": "Siz"
+      },
+      "profile": {
+        "title": "Profil",
+        "subtitle": "Hisobingiz va sozlamalaringizni boshqaring.",
+        "personalInfo": "Shaxsiy ma'lumotlar",
+        "dob": "Tug'ilgan sana",
+        "nativeLang": "Ona tili",
+        "band": "Band",
+        "streak": "Streak",
+        "target": "Maqsad",
+        "preferences": "Sozlamalar",
+        "theme": "Mavzu",
+        "themeDesc": "Tungi va kunduzgi rejim o'rtasida almashtirish",
+        "pushNotif": "Push bildirishnomalar",
+        "pushDesc": "Uy vazifasi eslatmalari va AI fikr-mulohaza ogohlantirishlari",
+        "weeklyReport": "Haftalik yutuq hisoboti",
+        "weeklyDesc": "Har yakshanba emailga xulosa oling"
+      }
+    },
+    "teacher": {
+      "students": {
+        "title": "Mening o'quvchilarim",
+        "subtitle": "O'quvchilaringizni kuzating va qo'llab-quvvatlang.",
+        "total": "Jami o'quvchilar",
+        "activeToday": "Bugun faol",
+        "atRisk": "Xavf ostida",
+        "avgBand": "O'rtacha Band",
+        "student": "O'quvchi",
+        "group": "Guruh",
+        "band": "Band",
+        "attendance": "Davomat",
+        "essays": "Insholar",
+        "status": "Holat",
+        "active": "Faol",
+        "idle": "Sust",
+        "risk": "Xavf ostida"
+      },
+      "groups": {
+        "title": "Guruhlar",
+        "subtitle": "O'qitish guruhlaringiz va jadvallaringizni boshqaring.",
+        "newGroup": "Yangi guruh",
+        "groups": "Guruhlar",
+        "totalStudents": "Jami o'quvchilar",
+        "avgBand": "O'rtacha Band",
+        "students": "O'quvchilar",
+        "schedule": "Jadval",
+        "viewGroup": "Guruhni ko'rish"
+      },
+      "essays": {
+        "title": "Insho tekshiruvi",
+        "subtitle": "AI insholarni oldindan baholaydi — siz yakuniy bahoni qo'shasiz.",
+        "aiAssisted": "AI yordamida",
+        "needsReview": "Tekshirish kerak",
+        "reviewed": "Tekshirilgan",
+        "all": "Barchasi",
+        "allCaughtUp": "Hammasi bajarildi",
+        "noEssays": "Bu ko'rinishda insho yo'q.",
+        "selectEssay": "Inshoni tanlang",
+        "pickEssay": "Tekshirish uchun navbatdan insho tanlang.",
+        "aiBand": "AI Band",
+        "essayExcerpt": "Insho parchasi",
+        "yourFeedback": "Sizning fikr-mulohazangiz",
+        "feedbackPlaceholder": "O'quvchi uchun izoh qoldiring…",
+        "saveDraft": "Qoralama saqlash",
+        "sendFeedback": "Fikr yuborish",
+        "words": "so'z"
+      },
+      "assignments": {
+        "title": "Topshiriqlar",
+        "subtitle": "Guruhlaringiz bo'ylab uy vazifasi yarating va kuzating.",
+        "newAssignment": "Yangi topshiriq",
+        "createAssignment": "Topshiriq yaratish",
+        "assignTitle": "Sarlavha",
+        "group": "Guruh",
+        "type": "Tur",
+        "submissions": "Topshirilganlar"
+      },
+      "statistics": {
+        "title": "Statistika",
+        "subtitle": "Sinf natijalari va faollik tahlili.",
+        "improving": "Yaxshilanmoqda",
+        "activeStudents": "Faol o'quvchilar",
+        "classAvgBand": "Sinf o'rtacha Band",
+        "essaysGraded": "Baholangan insholar",
+        "avgAttendance": "O'rtacha davomat",
+        "classBandTrend": "Sinf Band tendentsiyasi",
+        "sixMonth": "6 oylik o'rtacha",
+        "skillCoverage": "Ko'nikma qamrovi",
+        "classAverage": "Sinf o'rtachasi",
+        "bandDist": "Band taqsimoti",
+        "studentsPerBand": "Har band bo'yicha o'quvchilar"
+      },
+      "messages": {
+        "title": "Xabarlar",
+        "subtitle": "O'quvchilaringiz bilan aloqada bo'ling.",
+        "online": "Onlayn",
+        "noMessages": "Hali xabar yo'q",
+        "typePlaceholder": "Xabar yozing…"
+      },
+      "attendance": {
+        "title": "Davomat",
+        "subtitle": "Haftalik davomatni belgilang va kuzating. O'zgartirish uchun katakni bosing.",
+        "thisWeek": "Bu hafta",
+        "students": "O'quvchilar",
+        "attendanceRate": "Davomat darajasi",
+        "sessions": "Darslar",
+        "student": "O'quvchi",
+        "rate": "Daraja",
+        "present": "Bor",
+        "late": "Kech",
+        "absent": "Yo'q"
+      }
+    },
+    "manager": {
+      "analytics": {
+        "title": "Tahlil",
+        "subtitle": "Biznes natijalari bir qarashda.",
+        "growing": "O'smoqda",
+        "totalRevenue": "Jami daromad",
+        "activeStudents": "Faol o'quvchilar",
+        "teachers": "O'qituvchilar",
+        "avgBandLift": "O'rtacha Band o'sishi",
+        "revenueStudents": "Daromad va o'quvchilar",
+        "lastSixMonths": "Oxirgi 6 oy",
+        "courseMix": "Kurs taqsimoti",
+        "enrollmentByCourse": "Kurslar bo'yicha qabul",
+        "teacherPerf": "O'qituvchi samaradorligi",
+        "studentsVsBand": "O'qitilgan o'quvchilar vs o'rtacha band"
+      },
+      "teachers": {
+        "title": "O'qituvchilar",
+        "subtitle": "O'qituvchilar tarkibini va samaradorligini boshqaring.",
+        "addTeacher": "O'qituvchi qo'shish",
+        "teachers": "O'qituvchilar",
+        "studentsTaught": "O'qitilgan o'quvchilar",
+        "avgRating": "O'rtacha reyting",
+        "topBand": "Eng yuqori Band",
+        "students": "O'quvchilar",
+        "groups": "Guruhlar",
+        "band": "Band",
+        "allTeachers": "Barcha o'qituvchilar",
+        "rating": "Reyting"
+      },
+      "groups": {
+        "title": "Guruhlar",
+        "subtitle": "Akademiya bo'ylab barcha o'quv guruhlari.",
+        "newGroup": "Yangi guruh",
+        "activeGroups": "Faol guruhlar",
+        "enrolled": "Qabul qilingan",
+        "avgBand": "O'rtacha Band",
+        "students": "O'quvchilar",
+        "schedule": "Jadval",
+        "leadTeacher": "Bosh o'qituvchi"
+      },
+      "payments": {
+        "title": "To'lovlar",
+        "subtitle": "To'lov va daromadni kuzating.",
+        "export": "Eksport",
+        "collected": "Yig'ilgan",
+        "pending": "Kutilmoqda",
+        "overdue": "Kechikkan",
+        "student": "O'quvchi",
+        "course": "Kurs",
+        "amount": "Summa",
+        "date": "Sana",
+        "status": "Holat",
+        "paid": "To'langan",
+        "all": "Barchasi"
+      },
+      "courses": {
+        "title": "Kurslar",
+        "subtitle": "Kurs katalogi va narxlaringizni boshqaring.",
+        "newCourse": "Yangi kurs",
+        "courses": "Kurslar",
+        "enrolled": "Qabul qilingan",
+        "monthlyRevenue": "Oylik daromad",
+        "completion": "Tugatish",
+        "students": "o'quvchi",
+        "weeks": "hafta",
+        "capacity": "Sig'im"
+      },
+      "reports": {
+        "title": "Hisobotlar",
+        "subtitle": "Biznes hisobotlarini yarating va yuklab oling.",
+        "generateNew": "Yangi yaratish",
+        "revenueTrend": "Daromad tendentsiyasi",
+        "usedInReport": "Oylik moliyaviy hisobotda ishlatiladi",
+        "availableReports": "Mavjud hisobotlar"
+      }
+    },
+    "admin": {
+      "users": {
+        "title": "Foydalanuvchilarni boshqarish",
+        "subtitle": "Barcha platforma hisoblarini boshqaring.",
+        "addUser": "Foydalanuvchi qo'shish",
+        "totalUsers": "Jami foydalanuvchilar",
+        "active": "Faol",
+        "suspended": "To'xtatilgan",
+        "user": "Foydalanuvchi",
+        "joined": "Qo'shilgan",
+        "status": "Holat"
+      },
+      "roles": {
+        "title": "Rollar",
+        "subtitle": "Har bir rol nima qila olishini belgilang.",
+        "newRole": "Yangi rol",
+        "permissions": "ruxsat"
+      },
+      "permissions": {
+        "title": "Ruxsatlar",
+        "subtitle": "Aniq kirish nazorati. O'zgartirish uchun katakni bosing.",
+        "rbac": "RBAC",
+        "permission": "Ruxsat",
+        "savePermissions": "Ruxsatlarni saqlash"
+      },
+      "aiSettings": {
+        "title": "AI sozlamalari",
+        "subtitle": "ZUKKO'ni quvvatlaydigan AI dvigatelini sozlang.",
+        "aiEngine": "AI dvigatel",
+        "activeModels": "Faol modellar",
+        "selectModels": "Baholash va tahlil modellarini tanlang",
+        "connected": "Ulangan",
+        "gradingParams": "Baholash parametrlari",
+        "tuneBehavior": "AI xatti-harakatini sozlash",
+        "temperature": "Temperatura (ijodkorlik)",
+        "strictness": "Baholash qattiqligi",
+        "currentProfile": "Joriy profil",
+        "strict": "Qattiq — rasmiy ekspert standartlariga yaqin.",
+        "balanced": "Muvozanatli — rag'batlantiruvchi, lekin adolatli.",
+        "lenient": "Yumshoq — boshlovchilar uchun motivatsion fikr.",
+        "featureToggles": "Funksiya almashtirgichlari",
+        "autoGrade": "Yuborilganda insholarni avto-baholash",
+        "autoGradeDesc": "AI o'qituvchisiz insholarni bir zumda baholaydi",
+        "speakingEval": "AI nutq baholash",
+        "speakingEvalDesc": "Audiodan talaffuz, ravonlik va grammatikani baholash",
+        "tutorChat": "24/7 AI repetitor chat",
+        "tutorChatDesc": "O'quvchilar istalgan vaqtda AI repetitor bilan suhbatlasha oladi",
+        "saveSettings": "Sozlamalarni saqlash"
+      },
+      "subscription": {
+        "title": "Obuna",
+        "subtitle": "Rejalar va to'lovlarni boshqaring.",
+        "totalSubscribers": "Jami obunachilar",
+        "mrr": "MRR",
+        "proConversions": "Pro konversiyalar",
+        "churnRate": "Ketish darajasi",
+        "mostPopular": "Eng mashhur",
+        "editPlan": "Rejani tahrirlash",
+        "subsByPlan": "Reja bo'yicha obunachilar"
+      },
+      "analytics": {
+        "title": "Tizim tahlili",
+        "subtitle": "Butun platforma bo'yicha AI ishlatilishi va holati.",
+        "operational": "Barcha tizimlar ishlamoqda",
+        "aiRequests": "AI so'rovlari (oy)",
+        "avgLatency": "O'rtacha kechikish",
+        "uptime": "Ishlash vaqti",
+        "tokenSpend": "Token sarfi",
+        "apiCalls": "API chaqiruvlari",
+        "thisWeek": "Bu hafta",
+        "aiFeatureUsage": "AI funksiya ishlatilishi",
+        "byFeature": "Funksiya bo'yicha",
+        "platformGrowth": "Platforma o'sishi",
+        "studentCount": "Vaqt bo'yicha o'quvchilar soni"
+      },
+      "database": {
+        "title": "Ma'lumotlar bazasi",
+        "subtitle": "Saqlash va jadvallar holatini kuzating.",
+        "sync": "Sinxronlash",
+        "backup": "Zaxira",
+        "tables": "Jadvallar",
+        "totalRows": "Jami qatorlar",
+        "storageUsed": "Ishlatilgan xotira",
+        "queriesSec": "So'rov/sek",
+        "storage": "Xotira",
+        "storageOf": "1 GB dan 220 MB ishlatilgan",
+        "table": "Jadval",
+        "rows": "Qatorlar",
+        "size": "Hajm",
+        "growth": "24s o'sish"
+      },
+      "logs": {
+        "title": "Tizim loglari",
+        "subtitle": "Real vaqtdagi platforma faoliyati.",
+        "errors": "xato",
+        "warnings": "ogohlantirish"
+      },
+      "api": {
+        "title": "API boshqaruvi",
+        "subtitle": "API kalitlari va integratsiyalarni boshqaring.",
+        "newKey": "Yangi kalit",
+        "activeKeys": "Faol kalitlar",
+        "totalRequests": "Jami so'rovlar",
+        "quotaUsed": "Ishlatilgan kvota",
+        "usageMonth": "Bu oydagi foydalanish"
+      }
+    }
+  },
+  "filters": {
+    "all": "Barchasi",
+    "paid": "To'langan",
+    "pending": "Kutilmoqda",
+    "overdue": "Kechikkan",
+    "done": "Bajarilgan",
+    "active": "Faol",
+    "info": "Ma'lumot",
+    "success": "Muvaffaqiyat",
+    "warning": "Ogohlantirish",
+    "error": "Xato",
+    "student": "O'quvchi",
+    "teacher": "O'qituvchi",
+    "manager": "Menejer",
+    "admin": "Admin",
+    "needsReview": "Tekshirish kerak",
+    "reviewed": "Tekshirilgan"
+  }
+}

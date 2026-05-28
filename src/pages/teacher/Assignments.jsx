@@ -3,6 +3,7 @@ import { motion } from "framer-motion";
 import { ClipboardList, Plus, Calendar, Users, CheckCircle2, PenLine, X } from "lucide-react";
 import { SectionHeading, Badge, ProgressBar } from "../../components/ui/index.jsx";
 import { IconTile } from "../../components/dashboard/shared.jsx";
+import { useLanguage } from "../../hooks/useLanguage";
 
 const initial = [
   { id: "a1", title: "Writing Task 2 — Opinion Essay", group: "IELTS-A", due: "Tomorrow", submitted: 9, total: 14, type: "writing" },
@@ -12,6 +13,7 @@ const initial = [
 ];
 
 export default function TeacherAssignments() {
+  const { t } = useLanguage();
   const [list, setList] = useState(initial);
   const [showForm, setShowForm] = useState(false);
   const [form, setForm] = useState({ title: "", group: "IELTS-A", due: "", type: "writing" });
@@ -25,39 +27,39 @@ export default function TeacherAssignments() {
 
   return (
     <div className="space-y-7">
-      <SectionHeading title="Assignments" subtitle="Create and track homework across your groups."
+      <SectionHeading title={t("pages.teacher.assignments.title")} subtitle={t("pages.teacher.assignments.subtitle")}
         action={<button onClick={() => setShowForm((s) => !s)} className="btn-primary text-sm">
-          {showForm ? <X className="h-4 w-4" /> : <Plus className="h-4 w-4" />}{showForm ? "Cancel" : "New Assignment"}
+          {showForm ? <X className="h-4 w-4" /> : <Plus className="h-4 w-4" />}{showForm ? t("common.cancel") : t("pages.teacher.assignments.newAssignment")}
         </button>} />
 
       {showForm && (
         <motion.div initial={{ opacity: 0, height: 0 }} animate={{ opacity: 1, height: "auto" }}
           className="glass overflow-hidden rounded-2xl p-5">
-          <h3 className="mb-4 font-medium text-white">Create Assignment</h3>
+          <h3 className="mb-4 font-medium text-white">{t("pages.teacher.assignments.createAssignment")}</h3>
           <div className="grid gap-4 sm:grid-cols-2">
             <div className="sm:col-span-2">
-              <label className="mb-1.5 block text-xs text-white/50">Title</label>
+              <label className="mb-1.5 block text-xs text-white/50">{t("pages.teacher.assignments.assignTitle")}</label>
               <input value={form.title} onChange={(e) => setForm({ ...form, title: e.target.value })}
                 placeholder="e.g. Writing Task 2 — Problem/Solution"
                 className="w-full rounded-xl border border-white/10 bg-white/[0.03] px-3 py-2.5 text-sm text-white placeholder:text-white/30 focus:border-primary-500/50 focus:outline-none" />
             </div>
             <div>
-              <label className="mb-1.5 block text-xs text-white/50">Group</label>
+              <label className="mb-1.5 block text-xs text-white/50">{t("pages.teacher.assignments.group")}</label>
               <select value={form.group} onChange={(e) => setForm({ ...form, group: e.target.value })}
                 className="w-full rounded-xl border border-white/10 bg-white/[0.03] px-3 py-2.5 text-sm text-white focus:border-primary-500/50 focus:outline-none">
                 {["IELTS-A", "IELTS-B", "General"].map((g) => <option key={g} className="bg-bg-card">{g}</option>)}
               </select>
             </div>
             <div>
-              <label className="mb-1.5 block text-xs text-white/50">Type</label>
+              <label className="mb-1.5 block text-xs text-white/50">{t("pages.teacher.assignments.type")}</label>
               <select value={form.type} onChange={(e) => setForm({ ...form, type: e.target.value })}
                 className="w-full rounded-xl border border-white/10 bg-white/[0.03] px-3 py-2.5 text-sm text-white focus:border-primary-500/50 focus:outline-none">
-                {["writing", "reading", "listening", "vocabulary", "speaking"].map((t) => <option key={t} className="bg-bg-card capitalize">{t}</option>)}
+                {["writing", "reading", "listening", "vocabulary", "speaking"].map((ty) => <option key={ty} className="bg-bg-card capitalize">{ty}</option>)}
               </select>
             </div>
           </div>
           <div className="mt-4 flex justify-end">
-            <button onClick={create} className="btn-primary text-sm">Create</button>
+            <button onClick={create} className="btn-primary text-sm">{t("common.create")}</button>
           </div>
         </motion.div>
       )}
@@ -79,7 +81,7 @@ export default function TeacherAssignments() {
               </div>
               <div className="mt-4">
                 <div className="mb-1.5 flex items-center justify-between text-xs">
-                  <span className="flex items-center gap-1 text-white/50"><Users className="h-3 w-3" /> Submissions</span>
+                  <span className="flex items-center gap-1 text-white/50"><Users className="h-3 w-3" /> {t("pages.teacher.assignments.submissions")}</span>
                   <span className="text-white/70">{a.submitted}/{a.total}</span>
                 </div>
                 <ProgressBar value={a.submitted} max={a.total} color={done ? "green" : "primary"} />

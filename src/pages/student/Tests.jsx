@@ -7,10 +7,12 @@ import {
 import { SectionHeading, Badge, ProgressBar } from "../../components/ui/index.jsx";
 import { Panel, IconTile } from "../../components/dashboard/shared.jsx";
 import { tests, sampleQuiz } from "../../data/mockData";
+import { useLanguage } from "../../hooks/useLanguage";
 
 const difficultyColor = { Easy: "green", Medium: "amber", Hard: "red" };
 
 export default function StudentTests() {
+  const { t } = useLanguage();
   const [running, setRunning] = useState(false);
   const [current, setCurrent] = useState(0);
   const [answers, setAnswers] = useState({});
@@ -53,21 +55,21 @@ export default function StudentTests() {
           <div className="mx-auto mb-5 grid h-20 w-20 place-items-center rounded-full bg-gradient-to-br from-primary-600 to-secondary-500 shadow-glow">
             <Trophy className="h-9 w-9 text-white" />
           </div>
-          <h2 className="font-display text-3xl font-semibold text-white">Test Complete!</h2>
+          <h2 className="font-display text-3xl font-semibold text-white">{t("pages.student.tests.complete")}</h2>
           <p className="mt-1 text-white/50">{quiz.title}</p>
 
           <div className="mx-auto mt-7 grid max-w-md grid-cols-3 gap-4">
             <div className="glass rounded-2xl p-4">
               <div className="text-3xl font-semibold gradient-text">{score}/{quiz.questions.length}</div>
-              <div className="mt-1 text-xs text-white/40">Correct</div>
+              <div className="mt-1 text-xs text-white/40">{t("pages.student.tests.correct")}</div>
             </div>
             <div className="glass rounded-2xl p-4">
               <div className="text-3xl font-semibold text-white">{pct}%</div>
-              <div className="mt-1 text-xs text-white/40">Accuracy</div>
+              <div className="mt-1 text-xs text-white/40">{t("pages.student.tests.accuracy")}</div>
             </div>
             <div className="glass rounded-2xl p-4">
               <div className="text-3xl font-semibold text-secondary-400">{estBand}</div>
-              <div className="mt-1 text-xs text-white/40">Est. Band</div>
+              <div className="mt-1 text-xs text-white/40">{t("pages.student.tests.estBand")}</div>
             </div>
           </div>
 
@@ -93,8 +95,8 @@ export default function StudentTests() {
           </div>
 
           <div className="mt-7 flex justify-center gap-3">
-            <button onClick={start} className="btn-primary text-sm"><RotateCcw className="h-4 w-4" /> Retry</button>
-            <button onClick={reset} className="btn-ghost text-sm">Back to tests</button>
+            <button onClick={start} className="btn-primary text-sm"><RotateCcw className="h-4 w-4" /> {t("pages.student.tests.retry")}</button>
+            <button onClick={reset} className="btn-ghost text-sm">{t("pages.student.tests.backToTests")}</button>
           </div>
         </motion.div>
       </div>
@@ -108,9 +110,9 @@ export default function StudentTests() {
         <div className="mb-5 flex items-center justify-between">
           <div>
             <h2 className="font-display text-xl font-semibold text-white">{quiz.title}</h2>
-            <p className="text-sm text-white/40">Question {current + 1} of {quiz.questions.length}</p>
+            <p className="text-sm text-white/40">{t("pages.student.tests.question")} {current + 1} {t("pages.student.tests.of")} {quiz.questions.length}</p>
           </div>
-          <button onClick={reset} className="btn-ghost text-sm">Exit</button>
+          <button onClick={reset} className="btn-ghost text-sm">{t("pages.student.tests.exit")}</button>
         </div>
         <ProgressBar value={progress} />
 
@@ -147,7 +149,7 @@ export default function StudentTests() {
             <ArrowLeft className="h-4 w-4" /> Previous
           </button>
           <button onClick={next} disabled={answers[current] == null} className="btn-primary text-sm disabled:opacity-40">
-            {current === quiz.questions.length - 1 ? "Finish" : "Next"} <ArrowRight className="h-4 w-4" />
+            {current === quiz.questions.length - 1 ? t("pages.student.tests.finish") : t("common.next")} <ArrowRight className="h-4 w-4" />
           </button>
         </div>
       </div>
@@ -157,14 +159,14 @@ export default function StudentTests() {
   // ---------- Test library ----------
   return (
     <div className="space-y-7">
-      <SectionHeading title="IELTS Tests" subtitle="Practice tests graded instantly by AI." />
+      <SectionHeading title={t("pages.student.tests.title")} subtitle={t("pages.student.tests.subtitle")} />
 
       <div className="grid grid-cols-2 gap-4 lg:grid-cols-4">
         {[
-          { label: "Tests Available", value: tests.length, icon: FileText, accent: "primary" },
-          { label: "Completed", value: 18, icon: CheckCircle2, accent: "secondary" },
-          { label: "Avg Score", value: "74%", icon: ListChecks, accent: "primary" },
-          { label: "Best Band", value: "7.0", icon: Trophy, accent: "secondary" },
+          { label: t("pages.student.tests.available"), value: tests.length, icon: FileText, accent: "primary" },
+          { label: t("pages.student.tests.completed"), value: 18, icon: CheckCircle2, accent: "secondary" },
+          { label: t("pages.student.tests.avgScore"), value: "74%", icon: ListChecks, accent: "primary" },
+          { label: t("pages.student.tests.bestBand"), value: "7.0", icon: Trophy, accent: "secondary" },
         ].map((s, i) => (
           <Panel key={s.label} delay={i * 0.05} className="!p-4">
             <div className="flex items-center gap-3">
@@ -179,23 +181,23 @@ export default function StudentTests() {
       </div>
 
       <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-3">
-        {tests.map((t, i) => (
-          <motion.div key={t.id} initial={{ opacity: 0, y: 16 }} animate={{ opacity: 1, y: 0 }}
+        {tests.map((test, i) => (
+          <motion.div key={test.id} initial={{ opacity: 0, y: 16 }} animate={{ opacity: 1, y: 0 }}
             transition={{ delay: i * 0.05 }}
             className="glass group rounded-2xl p-5 transition-colors hover:border-primary-500/40">
             <div className="flex items-start justify-between">
-              <IconTile icon={FileText} accent={t.color === "secondary" ? "secondary" : "primary"} size="lg" />
-              <Badge color={difficultyColor[t.difficulty]}>{t.difficulty}</Badge>
+              <IconTile icon={FileText} accent={test.color === "secondary" ? "secondary" : "primary"} size="lg" />
+              <Badge color={difficultyColor[test.difficulty]}>{test.difficulty}</Badge>
             </div>
-            <h3 className="mt-4 font-medium text-white">{t.title}</h3>
+            <h3 className="mt-4 font-medium text-white">{test.title}</h3>
             <div className="mt-2 flex flex-wrap gap-x-4 gap-y-1 text-xs text-white/40">
-              <span className="flex items-center gap-1"><ListChecks className="h-3.5 w-3.5" /> {t.questions} Q</span>
-              <span className="flex items-center gap-1"><Clock className="h-3.5 w-3.5" /> {t.duration} min</span>
-              <span>{t.taken} taken</span>
+              <span className="flex items-center gap-1"><ListChecks className="h-3.5 w-3.5" /> {test.questions} {t("pages.student.tests.questions")}</span>
+              <span className="flex items-center gap-1"><Clock className="h-3.5 w-3.5" /> {test.duration} {t("pages.student.tests.min")}</span>
+              <span>{test.taken} {t("pages.student.tests.taken")}</span>
             </div>
             <button onClick={start}
               className="btn-primary mt-5 w-full justify-center text-sm opacity-90 group-hover:opacity-100">
-              <Play className="h-4 w-4" /> Start Test
+              <Play className="h-4 w-4" /> {t("pages.student.tests.startTest")}
             </button>
           </motion.div>
         ))}

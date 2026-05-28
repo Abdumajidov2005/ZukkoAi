@@ -3,6 +3,7 @@ import { motion } from "framer-motion";
 import { KeyRound, Check, X } from "lucide-react";
 import { SectionHeading, Badge } from "../../components/ui/index.jsx";
 import { Panel } from "../../components/dashboard/shared.jsx";
+import { useLanguage } from "../../hooks/useLanguage";
 
 const roles = ["Student", "Teacher", "Manager", "Admin"];
 const permissions = [
@@ -26,6 +27,7 @@ function seed() {
 }
 
 export default function AdminPermissions() {
+  const { t } = useLanguage();
   const [matrix, setMatrix] = useState(seed);
 
   function toggle(pi, ri) {
@@ -35,15 +37,15 @@ export default function AdminPermissions() {
 
   return (
     <div className="space-y-7">
-      <SectionHeading title="Permissions" subtitle="Fine-grained access control. Tap a cell to toggle."
-        action={<Badge color="secondary"><KeyRound className="h-3 w-3" /> RBAC</Badge>} />
+      <SectionHeading title={t("pages.admin.permissions.title")} subtitle={t("pages.admin.permissions.subtitle")}
+        action={<Badge color="secondary"><KeyRound className="h-3 w-3" /> {t("pages.admin.permissions.rbac")}</Badge>} />
 
       <Panel delay={0.05}>
         <div className="overflow-x-auto">
           <table className="w-full text-sm">
             <thead>
               <tr className="border-b border-white/[0.06] text-xs uppercase tracking-wide text-white/40">
-                <th className="px-3 py-3 text-left font-medium">Permission</th>
+                <th className="px-3 py-3 text-left font-medium">{t("pages.admin.permissions.permission")}</th>
                 {roles.map((r) => <th key={r} className="px-3 py-3 text-center font-medium">{r}</th>)}
               </tr>
             </thead>
@@ -72,7 +74,7 @@ export default function AdminPermissions() {
           </table>
         </div>
         <div className="mt-4 flex justify-end">
-          <button className="btn-primary text-sm">Save permissions</button>
+          <button className="btn-primary text-sm">{t("pages.admin.permissions.savePermissions")}</button>
         </div>
       </Panel>
     </div>

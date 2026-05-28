@@ -4,6 +4,7 @@ import { CalendarCheck, Check, X, Minus, Users } from "lucide-react";
 import { SectionHeading, Badge, ProgressBar } from "../../components/ui/index.jsx";
 import { Panel, IconTile } from "../../components/dashboard/shared.jsx";
 import { teacherStudents } from "../../data/mockData";
+import { useLanguage } from "../../hooks/useLanguage";
 
 const days = ["Mon", "Wed", "Fri"];
 const states = ["present", "absent", "late"];
@@ -23,6 +24,7 @@ function seed() {
 }
 
 export default function TeacherAttendance() {
+  const { t } = useLanguage();
   const [grid, setGrid] = useState(seed);
 
   function cycle(sid, di) {
@@ -40,26 +42,26 @@ export default function TeacherAttendance() {
 
   return (
     <div className="space-y-7">
-      <SectionHeading title="Attendance" subtitle="Mark and track weekly attendance. Tap a cell to change."
-        action={<Badge color="green"><CalendarCheck className="h-3 w-3" /> This week</Badge>} />
+      <SectionHeading title={t("pages.teacher.attendance.title")} subtitle={t("pages.teacher.attendance.subtitle")}
+        action={<Badge color="green"><CalendarCheck className="h-3 w-3" /> {t("pages.teacher.attendance.thisWeek")}</Badge>} />
 
       <div className="grid grid-cols-3 gap-4">
         <Panel className="!p-4" delay={0}>
           <div className="flex items-center gap-3">
             <IconTile icon={Users} accent="primary" />
-            <div><div className="text-xl font-semibold text-white">{teacherStudents.length}</div><div className="text-xs text-white/40">Students</div></div>
+            <div><div className="text-xl font-semibold text-white">{teacherStudents.length}</div><div className="text-xs text-white/40">{t("pages.teacher.attendance.students")}</div></div>
           </div>
         </Panel>
         <Panel className="!p-4" delay={0.05}>
           <div className="flex items-center gap-3">
             <IconTile icon={Check} accent="green" />
-            <div><div className="text-xl font-semibold text-white">{rate}%</div><div className="text-xs text-white/40">Attendance Rate</div></div>
+            <div><div className="text-xl font-semibold text-white">{rate}%</div><div className="text-xs text-white/40">{t("pages.teacher.attendance.attendanceRate")}</div></div>
           </div>
         </Panel>
         <Panel className="!p-4" delay={0.1}>
           <div className="flex items-center gap-3">
             <IconTile icon={CalendarCheck} accent="secondary" />
-            <div><div className="text-xl font-semibold text-white">{days.length}</div><div className="text-xs text-white/40">Sessions</div></div>
+            <div><div className="text-xl font-semibold text-white">{days.length}</div><div className="text-xs text-white/40">{t("pages.teacher.attendance.sessions")}</div></div>
           </div>
         </Panel>
       </div>
@@ -69,9 +71,9 @@ export default function TeacherAttendance() {
           <table className="w-full text-sm">
             <thead>
               <tr className="border-b border-white/[0.06] text-xs uppercase tracking-wide text-white/40">
-                <th className="px-3 py-3 text-left font-medium">Student</th>
+                <th className="px-3 py-3 text-left font-medium">{t("pages.teacher.attendance.student")}</th>
                 {days.map((d) => <th key={d} className="px-3 py-3 text-center font-medium">{d}</th>)}
-                <th className="px-3 py-3 text-right font-medium">Rate</th>
+                <th className="px-3 py-3 text-right font-medium">{t("pages.teacher.attendance.rate")}</th>
               </tr>
             </thead>
             <tbody>
@@ -111,9 +113,9 @@ export default function TeacherAttendance() {
           </table>
         </div>
         <div className="mt-4 flex gap-4 text-xs text-white/40">
-          <span className="flex items-center gap-1.5"><Check className="h-3.5 w-3.5 text-emerald-400" /> Present</span>
-          <span className="flex items-center gap-1.5"><Minus className="h-3.5 w-3.5 text-amber-400" /> Late</span>
-          <span className="flex items-center gap-1.5"><X className="h-3.5 w-3.5 text-rose-400" /> Absent</span>
+          <span className="flex items-center gap-1.5"><Check className="h-3.5 w-3.5 text-emerald-400" /> {t("pages.teacher.attendance.present")}</span>
+          <span className="flex items-center gap-1.5"><Minus className="h-3.5 w-3.5 text-amber-400" /> {t("pages.teacher.attendance.late")}</span>
+          <span className="flex items-center gap-1.5"><X className="h-3.5 w-3.5 text-rose-400" /> {t("pages.teacher.attendance.absent")}</span>
         </div>
       </Panel>
     </div>

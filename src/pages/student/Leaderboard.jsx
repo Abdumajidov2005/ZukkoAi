@@ -3,11 +3,13 @@ import { TrendingUp, TrendingDown, Minus, Crown, Flame } from "lucide-react";
 import { SectionHeading, Badge, Avatar } from "../../components/ui/index.jsx";
 import { Panel } from "../../components/dashboard/shared.jsx";
 import { leaderboard } from "../../data/mockData";
+import { useLanguage } from "../../hooks/useLanguage";
 
 const trendIcon = { up: TrendingUp, down: TrendingDown, same: Minus };
 const trendColor = { up: "text-emerald-400", down: "text-rose-400", same: "text-white/30" };
 
 export default function StudentLeaderboard() {
+  const { t } = useLanguage();
   const podium = leaderboard.slice(0, 3);
   // reorder podium to 2-1-3 for visual
   const podiumOrder = [podium[1], podium[0], podium[2]];
@@ -15,8 +17,8 @@ export default function StudentLeaderboard() {
 
   return (
     <div className="space-y-7">
-      <SectionHeading title="Leaderboard" subtitle="Compete with learners across ZUKKO AI."
-        action={<Badge color="amber"><Flame className="h-3 w-3" /> Weekly</Badge>} />
+      <SectionHeading title={t("pages.student.leaderboard.title")} subtitle={t("pages.student.leaderboard.subtitle")}
+        action={<Badge color="amber"><Flame className="h-3 w-3" /> {t("pages.student.leaderboard.weekly")}</Badge>} />
 
       {/* Podium */}
       <Panel delay={0}>
@@ -38,7 +40,7 @@ export default function StudentLeaderboard() {
                 } pt-3`}>
                   <span className="font-display text-2xl font-bold text-white/80">{p.rank}</span>
                 </div>
-                <div className="mt-1 text-xs font-medium text-white/60">{p.points.toLocaleString()} pts</div>
+                <div className="mt-1 text-xs font-medium text-white/60">{p.points.toLocaleString()} {t("pages.student.leaderboard.pts")}</div>
               </motion.div>
             );
           })}
@@ -46,7 +48,7 @@ export default function StudentLeaderboard() {
       </Panel>
 
       {/* Full ranking */}
-      <Panel title="Full Ranking" delay={0.1}>
+      <Panel title={t("pages.student.leaderboard.fullRanking")} delay={0.1}>
         <div className="space-y-2">
           {leaderboard.map((p, i) => {
             const TIcon = trendIcon[p.trend];
@@ -63,7 +65,7 @@ export default function StudentLeaderboard() {
                 <div className="min-w-0 flex-1">
                   <div className="flex items-center gap-2">
                     <span className="truncate text-sm font-medium text-white">{p.name}</span>
-                    {p.me && <Badge color="primary">You</Badge>}
+                    {p.me && <Badge color="primary">{t("pages.student.leaderboard.you")}</Badge>}
                   </div>
                   <div className="text-xs text-white/40">Band {p.band}</div>
                 </div>

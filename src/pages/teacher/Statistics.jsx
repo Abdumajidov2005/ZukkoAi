@@ -6,6 +6,7 @@ import { BarChart3, TrendingUp, Users, FileCheck2, Award } from "lucide-react";
 import { SectionHeading, StatCard, Badge } from "../../components/ui/index.jsx";
 import { Panel, tooltipStyle } from "../../components/dashboard/shared.jsx";
 import { teacherStudents, skillRadar } from "../../data/mockData";
+import { useLanguage } from "../../hooks/useLanguage";
 
 const bandTrend = [
   { month: "Jan", classAvg: 5.8 }, { month: "Feb", classAvg: 6.0 },
@@ -14,6 +15,7 @@ const bandTrend = [
 ];
 
 export default function TeacherStatistics() {
+  const { t } = useLanguage();
   const bandDist = [5, 5.5, 6, 6.5, 7, 7.5].map((b) => ({
     band: b.toString(),
     count: teacherStudents.filter((s) => Math.round(s.band * 2) / 2 === b).length,
@@ -21,18 +23,18 @@ export default function TeacherStatistics() {
 
   return (
     <div className="space-y-7">
-      <SectionHeading title="Statistics" subtitle="Class performance and engagement insights."
-        action={<Badge color="green"><TrendingUp className="h-3 w-3" /> Improving</Badge>} />
+      <SectionHeading title={t("pages.teacher.statistics.title")} subtitle={t("pages.teacher.statistics.subtitle")}
+        action={<Badge color="green"><TrendingUp className="h-3 w-3" /> {t("pages.teacher.statistics.improving")}</Badge>} />
 
       <div className="grid grid-cols-2 gap-4 lg:grid-cols-4">
-        <StatCard icon={Users} label="Active Students" value="43" change="+5" accent="primary" delay={0} />
-        <StatCard icon={Award} label="Class Avg Band" value="6.8" change="+0.4" accent="secondary" delay={0.05} />
-        <StatCard icon={FileCheck2} label="Essays Graded" value="312" change="+28" accent="primary" delay={0.1} />
-        <StatCard icon={BarChart3} label="Avg Attendance" value="89%" change="+2%" accent="secondary" delay={0.15} />
+        <StatCard icon={Users} label={t("pages.teacher.statistics.activeStudents")} value="43" change="+5" accent="primary" delay={0} />
+        <StatCard icon={Award} label={t("pages.teacher.statistics.classAvgBand")} value="6.8" change="+0.4" accent="secondary" delay={0.05} />
+        <StatCard icon={FileCheck2} label={t("pages.teacher.statistics.essaysGraded")} value="312" change="+28" accent="primary" delay={0.1} />
+        <StatCard icon={BarChart3} label={t("pages.teacher.statistics.avgAttendance")} value="89%" change="+2%" accent="secondary" delay={0.15} />
       </div>
 
       <div className="grid gap-4 lg:grid-cols-3">
-        <Panel title="Class Band Trend" subtitle="6-month average" className="lg:col-span-2" delay={0.1}>
+        <Panel title={t("pages.teacher.statistics.classBandTrend")} subtitle={t("pages.teacher.statistics.sixMonth")} className="lg:col-span-2" delay={0.1}>
           <ResponsiveContainer width="100%" height={260}>
             <AreaChart data={bandTrend}>
               <defs>
@@ -50,7 +52,7 @@ export default function TeacherStatistics() {
           </ResponsiveContainer>
         </Panel>
 
-        <Panel title="Skill Coverage" subtitle="Class average" delay={0.15}>
+        <Panel title={t("pages.teacher.statistics.skillCoverage")} subtitle={t("pages.teacher.statistics.classAverage")} delay={0.15}>
           <ResponsiveContainer width="100%" height={260}>
             <RadarChart data={skillRadar} outerRadius="70%">
               <PolarGrid stroke="rgba(255,255,255,0.1)" />
@@ -61,7 +63,7 @@ export default function TeacherStatistics() {
         </Panel>
       </div>
 
-      <Panel title="Band Distribution" subtitle="Students per band score" delay={0.2}>
+      <Panel title={t("pages.teacher.statistics.bandDist")} subtitle={t("pages.teacher.statistics.studentsPerBand")} delay={0.2}>
         <ResponsiveContainer width="100%" height={240}>
           <BarChart data={bandDist}>
             <CartesianGrid strokeDasharray="3 3" stroke="rgba(255,255,255,0.05)" vertical={false} />

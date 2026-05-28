@@ -7,6 +7,7 @@ import {
 import { Trophy, PenLine, FileText, Flame, ArrowRight, Clock, CheckCircle2 } from "lucide-react";
 import { StatCard, SectionHeading, Badge } from "../../components/ui/index.jsx";
 import { useAuthStore } from "../../store/authStore";
+import { useLanguage } from "../../hooks/useLanguage";
 import { progressData, skillRadar, weeklyActivity, recentEssays, homeworkList } from "../../data/mockData";
 
 const tooltipStyle = {
@@ -15,26 +16,27 @@ const tooltipStyle = {
 
 export default function StudentOverview() {
   const user = useAuthStore((s) => s.user);
+  const { t } = useLanguage();
   const pending = homeworkList.filter((h) => h.status === "pending" || h.status === "overdue");
 
   return (
     <div className="space-y-7">
       <SectionHeading
-        title={`Welcome back, ${user?.fullname?.split(" ")[0]} 👋`}
-        subtitle="Here's how your English journey is going."
+        title={t("pages.student.overview.welcome", { name: user?.fullname?.split(" ")[0] })}
+        subtitle={t("pages.student.overview.subtitle")}
         action={
           <Link to="/app/ai-checker" className="btn-primary !py-2.5 text-sm">
-            <PenLine className="h-4 w-4" /> Check an essay
+            <PenLine className="h-4 w-4" /> {t("pages.student.overview.checkEssay")}
           </Link>
         }
       />
 
       {/* KPIs */}
       <div className="grid grid-cols-2 lg:grid-cols-4 gap-4">
-        <StatCard icon={Trophy} label="Current Band" value="6.5" change="+1.0" trend="up" accent="primary" delay={0} />
-        <StatCard icon={PenLine} label="Essays Checked" value="24" change="+3" trend="up" accent="secondary" delay={0.05} />
-        <StatCard icon={Flame} label="Day Streak" value="12" change="+1" trend="up" accent="primary" delay={0.1} />
-        <StatCard icon={FileText} label="Tests Taken" value="18" change="+2" trend="up" accent="secondary" delay={0.15} />
+        <StatCard icon={Trophy} label={t("pages.student.overview.currentBand")} value="6.5" change="+1.0" trend="up" accent="primary" delay={0} />
+        <StatCard icon={PenLine} label={t("pages.student.overview.essaysChecked")} value="24" change="+3" trend="up" accent="secondary" delay={0.05} />
+        <StatCard icon={Flame} label={t("pages.student.overview.dayStreak")} value="12" change="+1" trend="up" accent="primary" delay={0.1} />
+        <StatCard icon={FileText} label={t("pages.student.overview.testsTaken")} value="18" change="+2" trend="up" accent="secondary" delay={0.15} />
       </div>
 
       {/* charts row */}
@@ -44,10 +46,10 @@ export default function StudentOverview() {
           className="lg:col-span-2 glass rounded-2xl p-5">
           <div className="flex items-center justify-between mb-4">
             <div>
-              <h3 className="font-medium text-white">Band Progression</h3>
-              <p className="text-xs text-white/40">Toward your 7.0 target</p>
+              <h3 className="font-medium text-white">{t("pages.student.overview.bandProgression")}</h3>
+              <p className="text-xs text-white/40">{t("pages.student.overview.towardTarget")}</p>
             </div>
-            <Badge color="green">On track</Badge>
+            <Badge color="green">{t("pages.student.overview.onTrack")}</Badge>
           </div>
           <ResponsiveContainer width="100%" height={240}>
             <AreaChart data={progressData}>
@@ -70,8 +72,8 @@ export default function StudentOverview() {
         {/* skill radar */}
         <motion.div initial={{ opacity: 0, y: 16 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.15 }}
           className="glass rounded-2xl p-5">
-          <h3 className="font-medium text-white mb-1">Skill Breakdown</h3>
-          <p className="text-xs text-white/40 mb-2">Your strengths & gaps</p>
+          <h3 className="font-medium text-white mb-1">{t("pages.student.overview.skillBreakdown")}</h3>
+          <p className="text-xs text-white/40 mb-2">{t("pages.student.overview.strengthsGaps")}</p>
           <ResponsiveContainer width="100%" height={230}>
             <RadarChart data={skillRadar} outerRadius="72%">
               <PolarGrid stroke="rgba(255,255,255,0.1)" />
@@ -87,7 +89,7 @@ export default function StudentOverview() {
         {/* weekly activity */}
         <motion.div initial={{ opacity: 0, y: 16 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.2 }}
           className="lg:col-span-2 glass rounded-2xl p-5">
-          <h3 className="font-medium text-white mb-4">Weekly Activity</h3>
+          <h3 className="font-medium text-white mb-4">{t("pages.student.overview.weeklyActivity")}</h3>
           <ResponsiveContainer width="100%" height={200}>
             <BarChart data={weeklyActivity} barGap={4}>
               <CartesianGrid strokeDasharray="3 3" stroke="rgba(255,255,255,0.05)" vertical={false} />
@@ -103,9 +105,9 @@ export default function StudentOverview() {
         <motion.div initial={{ opacity: 0, y: 16 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.25 }}
           className="glass rounded-2xl p-5">
           <div className="flex items-center justify-between mb-4">
-            <h3 className="font-medium text-white">Homework</h3>
+            <h3 className="font-medium text-white">{t("pages.student.overview.homework")}</h3>
             <Link to="/app/homework" className="text-xs text-primary-400 hover:text-primary-300 flex items-center gap-1">
-              View all <ArrowRight className="h-3 w-3" />
+              {t("pages.student.overview.viewAll")} <ArrowRight className="h-3 w-3" />
             </Link>
           </div>
           <div className="space-y-3">
@@ -116,9 +118,9 @@ export default function StudentOverview() {
                 </div>
                 <div className="min-w-0 flex-1">
                   <div className="truncate text-sm text-white">{h.title}</div>
-                  <div className="text-[11px] text-white/40">Due {h.due}</div>
+                  <div className="text-[11px] text-white/40">{t("pages.student.overview.due")} {h.due}</div>
                 </div>
-                {h.status === "overdue" && <Badge color="red">Late</Badge>}
+                {h.status === "overdue" && <Badge color="red">{t("pages.student.overview.late")}</Badge>}
               </div>
             ))}
           </div>
@@ -129,8 +131,8 @@ export default function StudentOverview() {
       <motion.div initial={{ opacity: 0, y: 16 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.3 }}
         className="glass rounded-2xl p-5">
         <div className="flex items-center justify-between mb-4">
-          <h3 className="font-medium text-white">Recent Essays</h3>
-          <Badge color="secondary">AI graded</Badge>
+          <h3 className="font-medium text-white">{t("pages.student.overview.recentEssays")}</h3>
+          <Badge color="secondary">{t("pages.student.overview.aiGraded")}</Badge>
         </div>
         <div className="space-y-2">
           {recentEssays.map((e) => (
@@ -140,10 +142,10 @@ export default function StudentOverview() {
               </div>
               <div className="min-w-0 flex-1">
                 <div className="truncate text-sm text-white">{e.title}</div>
-                <div className="text-[11px] text-white/40">{e.words} words · {e.date}</div>
+                <div className="text-[11px] text-white/40">{e.words} {t("pages.student.overview.words", "words")} · {e.date}</div>
               </div>
               {e.status === "pending" ? (
-                <Badge color="amber"><Clock className="h-3 w-3" /> Checking</Badge>
+                <Badge color="amber"><Clock className="h-3 w-3" /> {t("pages.student.overview.checking")}</Badge>
               ) : (
                 <div className="flex items-center gap-2">
                   <CheckCircle2 className="h-4 w-4 text-emerald-400" />

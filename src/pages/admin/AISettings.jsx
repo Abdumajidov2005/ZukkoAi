@@ -3,6 +3,7 @@ import { motion } from "framer-motion";
 import { Cpu, Sparkles, Zap, Save, Brain, Gauge } from "lucide-react";
 import { SectionHeading, Badge } from "../../components/ui/index.jsx";
 import { Panel, IconTile } from "../../components/dashboard/shared.jsx";
+import { useLanguage } from "../../hooks/useLanguage";
 
 function Slider({ label, value, onChange, min = 0, max = 100, suffix = "" }) {
   return (
@@ -33,6 +34,7 @@ const models = [
 ];
 
 export default function AdminAISettings() {
+  const { t } = useLanguage();
   const [model, setModel] = useState("gpt4o");
   const [temp, setTemp] = useState(30);
   const [strictness, setStrictness] = useState(70);
@@ -42,11 +44,11 @@ export default function AdminAISettings() {
 
   return (
     <div className="space-y-7">
-      <SectionHeading title="AI Settings" subtitle="Configure the AI engine that powers ZUKKO."
-        action={<Badge color="secondary"><Sparkles className="h-3 w-3" /> AI Engine</Badge>} />
+      <SectionHeading title={t("pages.admin.aiSettings.title")} subtitle={t("pages.admin.aiSettings.subtitle")}
+        action={<Badge color="secondary"><Sparkles className="h-3 w-3" /> {t("pages.admin.aiSettings.aiEngine")}</Badge>} />
 
       <div className="grid gap-6 lg:grid-cols-2">
-        <Panel title="Active Models" subtitle="Select grading & evaluation models" delay={0.05}>
+        <Panel title={t("pages.admin.aiSettings.activeModels")} subtitle={t("pages.admin.aiSettings.selectModels")} delay={0.05}>
           <div className="space-y-3">
             {models.map((m) => (
               <button key={m.id} onClick={() => setModel(m.id)}
@@ -58,34 +60,34 @@ export default function AdminAISettings() {
                   <div className="font-medium text-white">{m.name}</div>
                   <div className="text-xs text-white/40">{m.desc}</div>
                 </div>
-                {m.active && <Badge color="green">Connected</Badge>}
+                {m.active && <Badge color="green">{t("pages.admin.aiSettings.connected")}</Badge>}
               </button>
             ))}
           </div>
         </Panel>
 
-        <Panel title="Grading Parameters" subtitle="Tune AI behavior" delay={0.1}>
+        <Panel title={t("pages.admin.aiSettings.gradingParams")} subtitle={t("pages.admin.aiSettings.tuneBehavior")} delay={0.1}>
           <div className="space-y-6">
-            <Slider label="Temperature (creativity)" value={temp} onChange={setTemp} suffix="%" />
-            <Slider label="Grading strictness" value={strictness} onChange={setStrictness} suffix="%" />
+            <Slider label={t("pages.admin.aiSettings.temperature")} value={temp} onChange={setTemp} suffix="%" />
+            <Slider label={t("pages.admin.aiSettings.strictness")} value={strictness} onChange={setStrictness} suffix="%" />
             <div className="rounded-xl bg-white/[0.03] p-4 text-xs text-white/50">
               <div className="flex items-center gap-2 text-white/70">
-                <Gauge className="h-4 w-4 text-secondary-400" /> Current profile
+                <Gauge className="h-4 w-4 text-secondary-400" /> {t("pages.admin.aiSettings.currentProfile")}
               </div>
               <p className="mt-1.5">
-                {strictness >= 70 ? "Strict — closely matches official examiner standards." : strictness >= 40 ? "Balanced — encouraging but fair." : "Lenient — motivational feedback for beginners."}
+                {strictness >= 70 ? t("pages.admin.aiSettings.strict") : strictness >= 40 ? t("pages.admin.aiSettings.balanced") : t("pages.admin.aiSettings.lenient")}
               </p>
             </div>
           </div>
         </Panel>
       </div>
 
-      <Panel title="Feature Toggles" delay={0.15}>
+      <Panel title={t("pages.admin.aiSettings.featureToggles")} delay={0.15}>
         <div className="divide-y divide-white/[0.06]">
           {[
-            { label: "Auto-grade essays on submit", desc: "AI scores essays instantly without teacher action", on: autoGrade, set: setAutoGrade, icon: Zap },
-            { label: "AI Speaking evaluation", desc: "Score pronunciation, fluency & grammar from audio", on: speakingEval, set: setSpeakingEval, icon: Cpu },
-            { label: "24/7 AI Tutor chat", desc: "Students can chat with the AI tutor anytime", on: tutorChat, set: setTutorChat, icon: Sparkles },
+            { label: t("pages.admin.aiSettings.autoGrade"), desc: t("pages.admin.aiSettings.autoGradeDesc"), on: autoGrade, set: setAutoGrade, icon: Zap },
+            { label: t("pages.admin.aiSettings.speakingEval"), desc: t("pages.admin.aiSettings.speakingEvalDesc"), on: speakingEval, set: setSpeakingEval, icon: Cpu },
+            { label: t("pages.admin.aiSettings.tutorChat"), desc: t("pages.admin.aiSettings.tutorChatDesc"), on: tutorChat, set: setTutorChat, icon: Sparkles },
           ].map((f) => (
             <div key={f.label} className="flex items-center justify-between py-4">
               <div className="flex items-center gap-3">
@@ -97,7 +99,7 @@ export default function AdminAISettings() {
           ))}
         </div>
         <div className="mt-5 flex justify-end">
-          <button className="btn-primary text-sm"><Save className="h-4 w-4" /> Save settings</button>
+          <button className="btn-primary text-sm"><Save className="h-4 w-4" /> {t("pages.admin.aiSettings.saveSettings")}</button>
         </div>
       </Panel>
     </div>

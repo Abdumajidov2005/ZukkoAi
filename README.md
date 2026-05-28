@@ -74,3 +74,34 @@ src/
 ---
 
 Built as a frontend showcase. All data is fictional.
+
+## Languages (i18n)
+
+The app ships in **three languages — Uzbek (default), Russian, English** — using `react-i18next`.
+
+- **Full coverage**: the entire app is translated — landing page (hero, features, pricing, FAQ, contact, footer) and all four role dashboards (student, teacher, manager, admin), including page titles, KPI labels, table headers, status badges, buttons and filters.
+- Translation files: `src/locales/{uz,ru,en}.json`, organized as `pages.<role>.<page>.<key>` plus shared `common.*`, `nav.*`, `roles.*`, `filters.*` namespaces
+- Language is switched via the dropdown in the navbar (landing) and topbar (dashboards), and is **persisted** in `localStorage` (`zukko-lang`).
+- To add or edit text: add a key to all three JSON files and use it via `const { t } = useLanguage()` → `t("section.key")`.
+- The chosen language is also sent to the backend on every request as the `Accept-Language` header, so the server can localize its responses.
+
+## Connecting a backend
+
+The frontend is wired to switch from mock data to a real API **without changing component code** — only environment variables.
+
+1. Copy the env template:
+   ```bash
+   cp .env.example .env
+   ```
+2. In `.env`, set your server URL and turn off mock mode:
+   ```
+   VITE_API_BASE_URL=https://api.yourdomain.com
+   VITE_USE_MOCK=false
+   ```
+3. Restart the dev server.
+
+What happens then:
+- `src/services/api.js` is the single API client. It attaches the JWT (`Authorization: Bearer …`), JSON headers and the current language automatically, and centralizes all endpoint paths in `authApi` (and is ready for you to add `studentApi`, `teacherApi`, etc.).
+- `src/store/authStore.js` already has both code paths: in mock mode it uses `DEMO_USERS`; in real mode it calls `authApi.login` / `authApi.register`. Expected backend response shape: `{ token, user }`.
+- Default endpoint paths assumed: `POST /auth/login`, `POST /auth/register`, `GET /auth/me`, `POST /auth/forgot-password`. Edit them in `src/services/api.js` to match your routes.
+- The mock data layer (`src/data/mockData.js`) is structured to mirror API responses, so swapping each dashboard page to real data is a matter of replacing the imported mock with an `api.get(...)` call.

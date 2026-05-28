@@ -4,6 +4,7 @@ import { Info, AlertTriangle, CheckCircle2, XCircle, Search } from "lucide-react
 import { SectionHeading, Badge } from "../../components/ui/index.jsx";
 import { Panel } from "../../components/dashboard/shared.jsx";
 import { systemLogs } from "../../data/mockData";
+import { useLanguage } from "../../hooks/useLanguage";
 
 // expand log list a bit for realism
 const allLogs = [
@@ -22,6 +23,7 @@ const levelMeta = {
 };
 
 export default function AdminLogs() {
+  const { t } = useLanguage();
   const [level, setLevel] = useState("all");
   const [query, setQuery] = useState("");
 
@@ -37,11 +39,11 @@ export default function AdminLogs() {
 
   return (
     <div className="space-y-7">
-      <SectionHeading title="System Logs" subtitle="Real-time platform activity."
+      <SectionHeading title={t("pages.admin.logs.title")} subtitle={t("pages.admin.logs.subtitle")}
         action={
           <div className="flex gap-2">
-            <Badge color="red">{counts.error} errors</Badge>
-            <Badge color="amber">{counts.warning} warnings</Badge>
+            <Badge color="red">{counts.error} {t("pages.admin.logs.errors")}</Badge>
+            <Badge color="amber">{counts.warning} {t("pages.admin.logs.warnings")}</Badge>
           </div>
         } />
 
@@ -57,7 +59,7 @@ export default function AdminLogs() {
               <button key={f} onClick={() => setLevel(f)}
                 className={`rounded-lg px-3 py-1.5 text-xs capitalize transition-colors ${
                   level === f ? "bg-primary-500/20 text-primary-300" : "text-white/50 hover:text-white/80"
-                }`}>{f}</button>
+                }`}>{t(`filters.${f}`)}</button>
             ))}
           </div>
         </div>

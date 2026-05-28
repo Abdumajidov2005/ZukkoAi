@@ -2,18 +2,21 @@ import { useState, useEffect } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { motion, AnimatePresence } from "framer-motion";
 import { Sparkles, Menu, X } from "lucide-react";
-
-const NAV = [
-  { label: "Features", href: "#features" },
-  { label: "Platform", href: "#dashboard" },
-  { label: "Pricing", href: "#pricing" },
-  { label: "FAQ", href: "#faq" },
-];
+import { useLanguage } from "../../hooks/useLanguage";
+import LanguageSwitcher from "../ui/LanguageSwitcher";
 
 export default function PublicNavbar() {
   const [scrolled, setScrolled] = useState(false);
   const [open, setOpen] = useState(false);
   const navigate = useNavigate();
+  const { t } = useLanguage();
+
+  const NAV = [
+    { label: t("nav.features"), href: "#features" },
+    { label: t("nav.testimonials"), href: "#dashboard" },
+    { label: t("nav.pricing"), href: "#pricing" },
+    { label: t("nav.faq"), href: "#faq" },
+  ];
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 24);
@@ -48,7 +51,7 @@ export default function PublicNavbar() {
           <nav className="hidden md:flex items-center gap-1">
             {NAV.map((n) => (
               <a
-                key={n.label}
+                key={n.href}
                 href={n.href}
                 className="rounded-lg px-3.5 py-2 text-sm text-white/60 hover:text-white hover:bg-white/5 transition-colors"
               >
@@ -58,27 +61,31 @@ export default function PublicNavbar() {
           </nav>
 
           <div className="hidden md:flex items-center gap-2">
+            <LanguageSwitcher variant="full" />
             <button
               onClick={() => navigate("/login")}
               className="rounded-xl px-4 py-2 text-sm font-medium text-white/80 hover:text-white transition-colors"
             >
-              Log in
+              {t("common.login")}
             </button>
             <button
               onClick={() => navigate("/register")}
               className="btn-primary !px-5 !py-2 text-sm"
             >
-              Get Started
+              {t("common.getStarted")}
             </button>
           </div>
 
-          <button
-            className="md:hidden grid h-9 w-9 place-items-center rounded-lg glass text-white"
-            onClick={() => setOpen((o) => !o)}
-            aria-label="Menu"
-          >
-            {open ? <X className="h-5 w-5" /> : <Menu className="h-5 w-5" />}
-          </button>
+          <div className="md:hidden flex items-center gap-2">
+            <LanguageSwitcher variant="compact" />
+            <button
+              className="grid h-9 w-9 place-items-center rounded-lg glass text-white"
+              onClick={() => setOpen((o) => !o)}
+              aria-label="Menu"
+            >
+              {open ? <X className="h-5 w-5" /> : <Menu className="h-5 w-5" />}
+            </button>
+          </div>
         </div>
 
         <AnimatePresence>
@@ -91,7 +98,7 @@ export default function PublicNavbar() {
             >
               {NAV.map((n) => (
                 <a
-                  key={n.label}
+                  key={n.href}
                   href={n.href}
                   onClick={() => setOpen(false)}
                   className="block rounded-lg px-3 py-2.5 text-sm text-white/70 hover:bg-white/5"
@@ -101,10 +108,10 @@ export default function PublicNavbar() {
               ))}
               <div className="flex gap-2 pt-2">
                 <button onClick={() => navigate("/login")} className="btn-ghost flex-1 !py-2.5 text-sm">
-                  Log in
+                  {t("common.login")}
                 </button>
                 <button onClick={() => navigate("/register")} className="btn-primary flex-1 !py-2.5 text-sm">
-                  Start
+                  {t("common.getStarted")}
                 </button>
               </div>
             </motion.div>

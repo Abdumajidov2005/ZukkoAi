@@ -4,8 +4,10 @@ import { Cable, Plus, Copy, Eye, EyeOff, RefreshCw, Activity } from "lucide-reac
 import { SectionHeading, Badge, ProgressBar } from "../../components/ui/index.jsx";
 import { Panel, IconTile } from "../../components/dashboard/shared.jsx";
 import { apiKeys } from "../../data/mockData";
+import { useLanguage } from "../../hooks/useLanguage";
 
 export default function AdminApiManagement() {
+  const { t } = useLanguage();
   const [revealed, setRevealed] = useState({});
 
   const totalUsage = apiKeys.reduce((a, k) => a + k.usage, 0);
@@ -15,26 +17,26 @@ export default function AdminApiManagement() {
 
   return (
     <div className="space-y-7">
-      <SectionHeading title="API Management" subtitle="Manage API keys and integrations."
-        action={<button className="btn-primary text-sm"><Plus className="h-4 w-4" /> New Key</button>} />
+      <SectionHeading title={t("pages.admin.api.title")} subtitle={t("pages.admin.api.subtitle")}
+        action={<button className="btn-primary text-sm"><Plus className="h-4 w-4" /> {t("pages.admin.api.newKey")}</button>} />
 
       <div className="grid grid-cols-1 gap-4 sm:grid-cols-3">
         <Panel className="!p-4" delay={0}>
           <div className="flex items-center gap-3">
             <IconTile icon={Cable} accent="primary" />
-            <div><div className="text-xl font-semibold text-white">{apiKeys.length}</div><div className="text-xs text-white/40">Active Keys</div></div>
+            <div><div className="text-xl font-semibold text-white">{apiKeys.length}</div><div className="text-xs text-white/40">{t("pages.admin.api.activeKeys")}</div></div>
           </div>
         </Panel>
         <Panel className="!p-4" delay={0.05}>
           <div className="flex items-center gap-3">
             <IconTile icon={Activity} accent="secondary" />
-            <div><div className="text-xl font-semibold text-white">{(totalUsage / 1000).toFixed(1)}K</div><div className="text-xs text-white/40">Total Requests</div></div>
+            <div><div className="text-xl font-semibold text-white">{(totalUsage / 1000).toFixed(1)}K</div><div className="text-xs text-white/40">{t("pages.admin.api.totalRequests")}</div></div>
           </div>
         </Panel>
         <Panel className="!p-4" delay={0.1}>
           <div className="flex items-center gap-3">
             <IconTile icon={RefreshCw} accent="primary" />
-            <div><div className="text-xl font-semibold text-white">{Math.round((totalUsage / totalLimit) * 100)}%</div><div className="text-xs text-white/40">Quota Used</div></div>
+            <div><div className="text-xl font-semibold text-white">{Math.round((totalUsage / totalLimit) * 100)}%</div><div className="text-xs text-white/40">{t("pages.admin.api.quotaUsed")}</div></div>
           </div>
         </Panel>
       </div>
@@ -66,7 +68,7 @@ export default function AdminApiManagement() {
 
               <div className="mt-4">
                 <div className="mb-1.5 flex items-center justify-between text-xs">
-                  <span className="text-white/50">Usage this month</span>
+                  <span className="text-white/50">{t("pages.admin.api.usageMonth")}</span>
                   <span className="text-white/70">{k.usage.toLocaleString()} / {k.limit.toLocaleString()}</span>
                 </div>
                 <ProgressBar value={k.usage} max={k.limit} color={pct >= 80 ? "red" : pct >= 60 ? "amber" : "secondary"} />

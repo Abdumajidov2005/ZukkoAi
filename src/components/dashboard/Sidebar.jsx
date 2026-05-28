@@ -4,12 +4,14 @@ import { Sparkles, LogOut, ChevronLeft, X } from "lucide-react";
 import { NAV_CONFIG } from "./navConfig";
 import { useAuthStore } from "../../store/authStore";
 import { useUIStore } from "../../store/uiStore";
+import { useLanguage } from "../../hooks/useLanguage";
 
 export default function Sidebar() {
   const navigate = useNavigate();
   const user = useAuthStore((s) => s.user);
   const logout = useAuthStore((s) => s.logout);
   const { sidebarOpen, toggleSidebar, mobileNavOpen, setMobileNav } = useUIStore();
+  const { t } = useLanguage();
 
   const cfg = NAV_CONFIG[user?.role] || NAV_CONFIG.student;
 
@@ -39,7 +41,7 @@ export default function Sidebar() {
 
       {!collapsed && (
         <div className="px-5 pb-2">
-          <span className="text-[11px] uppercase tracking-wider text-white/30">{cfg.title} Panel</span>
+          <span className="text-[11px] uppercase tracking-wider text-white/30">{t(cfg.titleKey)}</span>
         </div>
       )}
 
@@ -61,7 +63,7 @@ export default function Sidebar() {
             {({ isActive }) => (
               <>
                 <item.icon className={`h-[18px] w-[18px] shrink-0 ${isActive ? "text-primary-400" : ""}`} />
-                {!collapsed && <span className="flex-1 whitespace-nowrap">{item.label}</span>}
+                {!collapsed && <span className="flex-1 whitespace-nowrap">{t(item.tKey)}</span>}
                 {!collapsed && item.badge && (
                   <span className="rounded-md bg-primary-500/20 px-1.5 py-0.5 text-[10px] font-medium text-primary-300">
                     {item.badge}
@@ -91,7 +93,7 @@ export default function Sidebar() {
           className={`mt-1 flex w-full items-center gap-3 rounded-xl px-3 py-2.5 text-sm text-white/55 hover:bg-rose-500/10 hover:text-rose-400 transition-colors ${collapsed ? "justify-center" : ""}`}
         >
           <LogOut className="h-[18px] w-[18px]" />
-          {!collapsed && "Log out"}
+          {!collapsed && t("common.logout")}
         </button>
       </div>
     </div>

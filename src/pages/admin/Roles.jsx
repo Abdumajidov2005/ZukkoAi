@@ -3,12 +3,14 @@ import { Shield, Users, Plus, Check } from "lucide-react";
 import { SectionHeading } from "../../components/ui/index.jsx";
 import { IconTile } from "../../components/dashboard/shared.jsx";
 import { rolesData } from "../../data/mockData";
+import { useLanguage } from "../../hooks/useLanguage";
 
 export default function AdminRoles() {
+  const { t } = useLanguage();
   return (
     <div className="space-y-7">
-      <SectionHeading title="Roles" subtitle="Define what each role can do."
-        action={<button className="btn-primary text-sm"><Plus className="h-4 w-4" /> New Role</button>} />
+      <SectionHeading title={t("pages.admin.roles.title")} subtitle={t("pages.admin.roles.subtitle")}
+        action={<button className="btn-primary text-sm"><Plus className="h-4 w-4" /> {t("pages.admin.roles.newRole")}</button>} />
 
       <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-4">
         {rolesData.map((r, i) => (
@@ -21,7 +23,7 @@ export default function AdminRoles() {
               </span>
             </div>
             <h3 className="mt-4 font-medium text-white">{r.name}</h3>
-            <p className="text-xs text-white/40">{r.permissions.length} permissions</p>
+            <p className="text-xs text-white/40">{r.permissions.length} {t("pages.admin.roles.permissions")}</p>
 
             <div className="mt-4 space-y-1.5">
               {r.permissions.map((p) => (

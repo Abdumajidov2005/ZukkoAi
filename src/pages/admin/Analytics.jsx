@@ -6,6 +6,7 @@ import { BarChart3, Cpu, Zap, Activity, Server } from "lucide-react";
 import { SectionHeading, StatCard, Badge } from "../../components/ui/index.jsx";
 import { Panel, tooltipStyle, CHART_COLORS } from "../../components/dashboard/shared.jsx";
 import { aiUsageData, revenueData } from "../../data/mockData";
+import { useLanguage } from "../../hooks/useLanguage";
 
 const apiCalls = [
   { day: "Mon", calls: 3200 }, { day: "Tue", calls: 4100 }, { day: "Wed", calls: 3800 },
@@ -13,22 +14,23 @@ const apiCalls = [
 ];
 
 export default function AdminAnalytics() {
+  const { t } = useLanguage();
   const totalAI = aiUsageData.reduce((a, d) => a + d.value, 0);
 
   return (
     <div className="space-y-7">
-      <SectionHeading title="System Analytics" subtitle="Platform-wide AI usage and health."
-        action={<Badge color="green"><Activity className="h-3 w-3" /> All systems operational</Badge>} />
+      <SectionHeading title={t("pages.admin.analytics.title")} subtitle={t("pages.admin.analytics.subtitle")}
+        action={<Badge color="green"><Activity className="h-3 w-3" /> {t("pages.admin.analytics.operational")}</Badge>} />
 
       <div className="grid grid-cols-2 gap-4 lg:grid-cols-4">
-        <StatCard icon={Cpu} label="AI Requests (mo)" value={`${(totalAI / 1000).toFixed(1)}K`} change="+18%" accent="primary" delay={0} />
-        <StatCard icon={Zap} label="Avg Latency" value="1.2s" change="-0.3s" trend="up" accent="secondary" delay={0.05} />
-        <StatCard icon={Server} label="Uptime" value="99.9%" change="+0.1%" accent="primary" delay={0.1} />
-        <StatCard icon={BarChart3} label="Token Spend" value="$842" change="+$96" trend="down" accent="secondary" delay={0.15} />
+        <StatCard icon={Cpu} label={t("pages.admin.analytics.aiRequests")} value={`${(totalAI / 1000).toFixed(1)}K`} change="+18%" accent="primary" delay={0} />
+        <StatCard icon={Zap} label={t("pages.admin.analytics.avgLatency")} value="1.2s" change="-0.3s" trend="up" accent="secondary" delay={0.05} />
+        <StatCard icon={Server} label={t("pages.admin.analytics.uptime")} value="99.9%" change="+0.1%" accent="primary" delay={0.1} />
+        <StatCard icon={BarChart3} label={t("pages.admin.analytics.tokenSpend")} value="$842" change="+$96" trend="down" accent="secondary" delay={0.15} />
       </div>
 
       <div className="grid gap-4 lg:grid-cols-3">
-        <Panel title="API Calls" subtitle="This week" className="lg:col-span-2" delay={0.1}>
+        <Panel title={t("pages.admin.analytics.apiCalls")} subtitle={t("pages.admin.analytics.thisWeek")} className="lg:col-span-2" delay={0.1}>
           <ResponsiveContainer width="100%" height={260}>
             <AreaChart data={apiCalls}>
               <defs>
@@ -46,7 +48,7 @@ export default function AdminAnalytics() {
           </ResponsiveContainer>
         </Panel>
 
-        <Panel title="AI Feature Usage" subtitle="By feature" delay={0.15}>
+        <Panel title={t("pages.admin.analytics.aiFeatureUsage")} subtitle={t("pages.admin.analytics.byFeature")} delay={0.15}>
           <ResponsiveContainer width="100%" height={220}>
             <PieChart>
               <Pie data={aiUsageData} dataKey="value" nameKey="name" cx="50%" cy="50%" innerRadius={50} outerRadius={85} paddingAngle={3} stroke="none">
@@ -68,7 +70,7 @@ export default function AdminAnalytics() {
         </Panel>
       </div>
 
-      <Panel title="Platform Growth" subtitle="Student count over time" delay={0.2}>
+      <Panel title={t("pages.admin.analytics.platformGrowth")} subtitle={t("pages.admin.analytics.studentCount")} delay={0.2}>
         <ResponsiveContainer width="100%" height={220}>
           <BarChart data={revenueData}>
             <CartesianGrid strokeDasharray="3 3" stroke="rgba(255,255,255,0.05)" vertical={false} />

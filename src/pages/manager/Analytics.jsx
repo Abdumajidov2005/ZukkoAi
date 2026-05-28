@@ -6,25 +6,27 @@ import { DollarSign, Users, TrendingUp, GraduationCap } from "lucide-react";
 import { SectionHeading, StatCard, Badge } from "../../components/ui/index.jsx";
 import { Panel, tooltipStyle } from "../../components/dashboard/shared.jsx";
 import { revenueData, courseDistribution, teacherPerformance } from "../../data/mockData";
+import { useLanguage } from "../../hooks/useLanguage";
 
 export default function ManagerAnalytics() {
+  const { t } = useLanguage();
   const totalRevenue = revenueData.reduce((a, r) => a + r.revenue, 0);
   const latestStudents = revenueData[revenueData.length - 1].students;
 
   return (
     <div className="space-y-7">
-      <SectionHeading title="Analytics" subtitle="Business performance at a glance."
-        action={<Badge color="green"><TrendingUp className="h-3 w-3" /> Growing</Badge>} />
+      <SectionHeading title={t("pages.manager.analytics.title")} subtitle={t("pages.manager.analytics.subtitle")}
+        action={<Badge color="green"><TrendingUp className="h-3 w-3" /> {t("pages.manager.analytics.growing")}</Badge>} />
 
       <div className="grid grid-cols-2 gap-4 lg:grid-cols-4">
-        <StatCard icon={DollarSign} label="Total Revenue" value={`$${(totalRevenue / 1000).toFixed(0)}K`} change="+14%" accent="primary" delay={0} />
-        <StatCard icon={Users} label="Active Students" value={latestStudents} change="+28" accent="secondary" delay={0.05} />
-        <StatCard icon={GraduationCap} label="Teachers" value="14" change="+2" accent="primary" delay={0.1} />
-        <StatCard icon={TrendingUp} label="Avg Band Lift" value="+1.4" change="+0.2" accent="secondary" delay={0.15} />
+        <StatCard icon={DollarSign} label={t("pages.manager.analytics.totalRevenue")} value={`$${(totalRevenue / 1000).toFixed(0)}K`} change="+14%" accent="primary" delay={0} />
+        <StatCard icon={Users} label={t("pages.manager.analytics.activeStudents")} value={latestStudents} change="+28" accent="secondary" delay={0.05} />
+        <StatCard icon={GraduationCap} label={t("pages.manager.analytics.teachers")} value="14" change="+2" accent="primary" delay={0.1} />
+        <StatCard icon={TrendingUp} label={t("pages.manager.analytics.avgBandLift")} value="+1.4" change="+0.2" accent="secondary" delay={0.15} />
       </div>
 
       <div className="grid gap-4 lg:grid-cols-3">
-        <Panel title="Revenue & Students" subtitle="Last 6 months" className="lg:col-span-2" delay={0.1}>
+        <Panel title={t("pages.manager.analytics.revenueStudents")} subtitle={t("pages.manager.analytics.lastSixMonths")} className="lg:col-span-2" delay={0.1}>
           <ResponsiveContainer width="100%" height={280}>
             <AreaChart data={revenueData}>
               <defs>
@@ -48,7 +50,7 @@ export default function ManagerAnalytics() {
           </ResponsiveContainer>
         </Panel>
 
-        <Panel title="Course Mix" subtitle="Enrollment by course" delay={0.15}>
+        <Panel title={t("pages.manager.analytics.courseMix")} subtitle={t("pages.manager.analytics.enrollmentByCourse")} delay={0.15}>
           <ResponsiveContainer width="100%" height={220}>
             <PieChart>
               <Pie data={courseDistribution} dataKey="value" nameKey="name" cx="50%" cy="50%"
@@ -71,7 +73,7 @@ export default function ManagerAnalytics() {
         </Panel>
       </div>
 
-      <Panel title="Teacher Performance" subtitle="Students taught vs average band" delay={0.2}>
+      <Panel title={t("pages.manager.analytics.teacherPerf")} subtitle={t("pages.manager.analytics.studentsVsBand")} delay={0.2}>
         <ResponsiveContainer width="100%" height={260}>
           <BarChart data={teacherPerformance} barGap={6}>
             <CartesianGrid strokeDasharray="3 3" stroke="rgba(255,255,255,0.05)" vertical={false} />

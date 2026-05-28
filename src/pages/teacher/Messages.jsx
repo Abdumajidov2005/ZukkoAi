@@ -3,6 +3,7 @@ import { motion } from "framer-motion";
 import { Send, Search, Circle } from "lucide-react";
 import { SectionHeading, Avatar, Badge } from "../../components/ui/index.jsx";
 import { teacherStudents } from "../../data/mockData";
+import { useLanguage } from "../../hooks/useLanguage";
 
 const seedThreads = {
   ts1: [
@@ -15,6 +16,7 @@ const seedThreads = {
 };
 
 export default function TeacherMessages() {
+  const { t } = useLanguage();
   const [activeId, setActiveId] = useState("ts1");
   const [threads, setThreads] = useState(seedThreads);
   const [draft, setDraft] = useState("");
@@ -32,7 +34,7 @@ export default function TeacherMessages() {
 
   return (
     <div className="space-y-7">
-      <SectionHeading title="Messages" subtitle="Stay in touch with your students." />
+      <SectionHeading title={t("pages.teacher.messages.title")} subtitle={t("pages.teacher.messages.subtitle")} />
 
       <div className="glass grid h-[32rem] grid-cols-1 overflow-hidden rounded-2xl md:grid-cols-3">
         {/* contacts */}
@@ -40,7 +42,7 @@ export default function TeacherMessages() {
           <div className="border-b border-white/[0.06] p-3">
             <div className="relative">
               <Search className="absolute left-3 top-1/2 h-4 w-4 -translate-y-1/2 text-white/30" />
-              <input value={query} onChange={(e) => setQuery(e.target.value)} placeholder="Search…"
+              <input value={query} onChange={(e) => setQuery(e.target.value)} placeholder={t("common.search")}
                 className="w-full rounded-xl border border-white/10 bg-white/[0.03] py-2 pl-9 pr-3 text-sm text-white placeholder:text-white/30 focus:border-primary-500/50 focus:outline-none" />
             </div>
           </div>
@@ -58,7 +60,7 @@ export default function TeacherMessages() {
                   </div>
                   <div className="min-w-0 flex-1">
                     <div className="truncate text-sm font-medium text-white">{c.name}</div>
-                    <div className="truncate text-xs text-white/40">{last?.text || "No messages yet"}</div>
+                    <div className="truncate text-xs text-white/40">{last?.text || t("pages.teacher.messages.noMessages")}</div>
                   </div>
                 </button>
               );
@@ -75,7 +77,7 @@ export default function TeacherMessages() {
                 <div className="text-sm font-medium text-white">{active.name}</div>
                 <div className="text-xs text-white/40">{active.group}</div>
               </div>
-              <Badge color="green" >Online</Badge>
+              <Badge color="green" >{t("pages.teacher.messages.online")}</Badge>
             </div>
           )}
           <div className="flex-1 space-y-3 overflow-y-auto p-4">
@@ -93,7 +95,7 @@ export default function TeacherMessages() {
           </div>
           <div className="flex items-center gap-2 border-t border-white/[0.06] p-3">
             <input value={draft} onChange={(e) => setDraft(e.target.value)}
-              onKeyDown={(e) => e.key === "Enter" && send()} placeholder="Type a message…"
+              onKeyDown={(e) => e.key === "Enter" && send()} placeholder={t("pages.teacher.messages.typePlaceholder")}
               className="flex-1 rounded-xl border border-white/10 bg-white/[0.03] px-4 py-2.5 text-sm text-white placeholder:text-white/30 focus:border-primary-500/50 focus:outline-none" />
             <button onClick={send} className="grid h-10 w-10 place-items-center rounded-xl bg-gradient-to-br from-primary-600 to-secondary-500 text-white">
               <Send className="h-4 w-4" />

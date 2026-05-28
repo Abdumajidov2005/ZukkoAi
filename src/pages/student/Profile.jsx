@@ -7,6 +7,7 @@ import { SectionHeading, Badge, Avatar } from "../../components/ui/index.jsx";
 import { Panel } from "../../components/dashboard/shared.jsx";
 import { useAuthStore } from "../../store/authStore";
 import { useUIStore } from "../../store/uiStore";
+import { useLanguage } from "../../hooks/useLanguage";
 
 function Field({ label, value, onChange, icon: Icon, type = "text" }) {
   return (
@@ -32,6 +33,7 @@ function Toggle({ on, onClick }) {
 }
 
 export default function StudentProfile() {
+  const { t } = useLanguage();
   const user = useAuthStore((s) => s.user);
   const { theme, toggleTheme } = useUIStore();
   const [name, setName] = useState(user?.fullname || "");
@@ -41,7 +43,7 @@ export default function StudentProfile() {
 
   return (
     <div className="space-y-7">
-      <SectionHeading title="Profile" subtitle="Manage your account and preferences." />
+      <SectionHeading title={t("pages.student.profile.title")} subtitle={t("pages.student.profile.subtitle")} />
 
       <div className="grid gap-6 lg:grid-cols-3">
         {/* identity card */}
@@ -59,7 +61,7 @@ export default function StudentProfile() {
           </div>
 
           <div className="mt-6 grid grid-cols-3 gap-3 border-t border-white/[0.06] pt-5">
-            {[["6.5", "Band", Award], ["12", "Streak", Flame], ["7.0", "Target", Target]].map(([v, l, Ic]) => (
+            {[["6.5", t("pages.student.profile.band"), Award], ["12", t("pages.student.profile.streak"), Flame], ["7.0", t("pages.student.profile.target"), Target]].map(([v, l, Ic]) => (
               <div key={l} className="text-center">
                 <Ic className="mx-auto mb-1 h-4 w-4 text-primary-400" />
                 <div className="text-lg font-semibold text-white">{v}</div>
@@ -70,40 +72,40 @@ export default function StudentProfile() {
         </Panel>
 
         {/* edit form */}
-        <Panel title="Personal Information" className="lg:col-span-2" delay={0.1}>
+        <Panel title={t("pages.student.profile.personalInfo")} className="lg:col-span-2" delay={0.1}>
           <div className="grid gap-4 sm:grid-cols-2">
-            <Field label="Full Name" value={name} onChange={setName} icon={User} />
-            <Field label="Email Address" value={email} onChange={setEmail} icon={Mail} type="email" />
-            <Field label="Date of Birth" value="2003-04-12" onChange={() => {}} icon={Calendar} type="date" />
-            <Field label="Native Language" value="Uzbek" onChange={() => {}} icon={Globe} />
+            <Field label={t("common.fullName")} value={name} onChange={setName} icon={User} />
+            <Field label={t("common.email")} value={email} onChange={setEmail} icon={Mail} type="email" />
+            <Field label={t("pages.student.profile.dob")} value="2003-04-12" onChange={() => {}} icon={Calendar} type="date" />
+            <Field label={t("pages.student.profile.nativeLang")} value="Uzbek" onChange={() => {}} icon={Globe} />
           </div>
           <div className="mt-5 flex justify-end">
-            <button className="btn-primary text-sm"><Save className="h-4 w-4" /> Save changes</button>
+            <button className="btn-primary text-sm"><Save className="h-4 w-4" /> {t("common.saveChanges")}</button>
           </div>
         </Panel>
       </div>
 
       {/* preferences */}
-      <Panel title="Preferences" delay={0.15}>
+      <Panel title={t("pages.student.profile.preferences")} delay={0.15}>
         <div className="divide-y divide-white/[0.06]">
           <div className="flex items-center justify-between py-4">
             <div className="flex items-center gap-3">
               {theme === "dark" ? <Moon className="h-5 w-5 text-primary-400" /> : <Sun className="h-5 w-5 text-amber-400" />}
-              <div><div className="text-sm font-medium text-white">Theme</div><div className="text-xs text-white/40">Switch between dark and light mode</div></div>
+              <div><div className="text-sm font-medium text-white">{t("pages.student.profile.theme")}</div><div className="text-xs text-white/40">{t("pages.student.profile.themeDesc")}</div></div>
             </div>
             <Toggle on={theme === "dark"} onClick={toggleTheme} />
           </div>
           <div className="flex items-center justify-between py-4">
             <div className="flex items-center gap-3">
               <Bell className="h-5 w-5 text-secondary-400" />
-              <div><div className="text-sm font-medium text-white">Push notifications</div><div className="text-xs text-white/40">Homework reminders & AI feedback alerts</div></div>
+              <div><div className="text-sm font-medium text-white">{t("pages.student.profile.pushNotif")}</div><div className="text-xs text-white/40">{t("pages.student.profile.pushDesc")}</div></div>
             </div>
             <Toggle on={notifs} onClick={() => setNotifs((v) => !v)} />
           </div>
           <div className="flex items-center justify-between py-4">
             <div className="flex items-center gap-3">
               <BookOpen className="h-5 w-5 text-primary-400" />
-              <div><div className="text-sm font-medium text-white">Weekly progress report</div><div className="text-xs text-white/40">Get a summary every Sunday by email</div></div>
+              <div><div className="text-sm font-medium text-white">{t("pages.student.profile.weeklyReport")}</div><div className="text-xs text-white/40">{t("pages.student.profile.weeklyDesc")}</div></div>
             </div>
             <Toggle on={weekly} onClick={() => setWeekly((v) => !v)} />
           </div>

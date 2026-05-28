@@ -1,6 +1,7 @@
 import { useState, useRef, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { Sparkles, X, Send, Loader2 } from "lucide-react";
+import { useLanguage } from "../../hooks/useLanguage";
 
 const CANNED = [
   "Great question! In IELTS Writing Task 2, a strong introduction paraphrases the prompt and states your position clearly. Try: 'It is often argued that…' followed by your stance.",
@@ -16,8 +17,9 @@ const SUGGESTIONS = [
 ];
 
 export default function AITutor({ open, onClose }) {
+  const { t } = useLanguage();
   const [messages, setMessages] = useState([
-    { role: "ai", text: "Hi! I'm your ZUKKO AI Tutor 👋 Ask me anything about IELTS, grammar, vocabulary or your essays." },
+    { role: "ai", text: t("tutor.greeting") },
   ]);
   const [input, setInput] = useState("");
   const [typing, setTyping] = useState(false);
@@ -63,7 +65,7 @@ export default function AITutor({ open, onClose }) {
                   <Sparkles className="h-5 w-5 text-white" />
                 </div>
                 <div>
-                  <div className="text-sm font-semibold text-white">AI Tutor</div>
+                  <div className="text-sm font-semibold text-white">{t("tutor.title")}</div>
                   <div className="flex items-center gap-1.5 text-[11px] text-emerald-400">
                     <span className="h-1.5 w-1.5 rounded-full bg-emerald-400 animate-pulse" /> Online · GPT-4o
                   </div>
@@ -82,10 +84,11 @@ export default function AITutor({ open, onClose }) {
                   initial={{ opacity: 0, y: 8 }} animate={{ opacity: 1, y: 0 }}
                   className={`flex ${m.role === "user" ? "justify-end" : "justify-start"}`}
                 >
-                  <div className={`max-w-[80%] rounded-2xl px-3.5 py-2.5 text-sm ${m.role === "user"
-                    ? "bg-gradient-to-r from-primary-600 to-primary-500 text-white"
-                    : "glass text-white/85"
-                    }`}>
+                  <div className={`max-w-[80%] rounded-2xl px-3.5 py-2.5 text-sm ${
+                    m.role === "user"
+                      ? "bg-gradient-to-r from-primary-600 to-primary-500 text-white"
+                      : "glass text-white/85"
+                  }`}>
                     {m.text}
                   </div>
                 </motion.div>
@@ -127,7 +130,7 @@ export default function AITutor({ open, onClose }) {
                   value={input}
                   onChange={(e) => setInput(e.target.value)}
                   onKeyDown={(e) => e.key === "Enter" && send()}
-                  placeholder="Ask your tutor…"
+                  placeholder={t("tutor.placeholder")}
                   className="flex-1 bg-transparent py-1.5 text-sm text-white placeholder:text-white/30 outline-none"
                 />
                 <button onClick={() => send()} disabled={!input.trim()} className="grid h-8 w-8 place-items-center rounded-lg bg-primary-600 text-white disabled:opacity-40 hover:bg-primary-500 transition-colors">

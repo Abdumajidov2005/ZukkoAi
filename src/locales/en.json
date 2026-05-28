@@ -1,0 +1,769 @@
+{
+  "common": {
+    "appName": "ZUKKO AI",
+    "login": "Login",
+    "logout": "Log out",
+    "register": "Register",
+    "getStarted": "Get Started",
+    "signIn": "Sign in",
+    "signUp": "Sign up",
+    "email": "Email",
+    "password": "Password",
+    "fullName": "Full Name",
+    "search": "Search…",
+    "save": "Save",
+    "saveChanges": "Save changes",
+    "cancel": "Cancel",
+    "create": "Create",
+    "edit": "Edit",
+    "delete": "Delete",
+    "download": "Download",
+    "export": "Export",
+    "viewAll": "View all",
+    "back": "Back",
+    "next": "Next",
+    "previous": "Previous",
+    "finish": "Finish",
+    "loading": "Loading…",
+    "all": "All",
+    "status": "Status",
+    "actions": "Actions",
+    "name": "Name",
+    "role": "Role",
+    "date": "Date",
+    "newKey": "New Key",
+    "language": "Language"
+  },
+  "nav": {
+    "features": "Features",
+    "pricing": "Pricing",
+    "testimonials": "Testimonials",
+    "faq": "FAQ",
+    "contact": "Contact"
+  },
+  "roles": {
+    "student": "Student",
+    "teacher": "Teacher",
+    "manager": "Manager",
+    "admin": "Admin"
+  },
+  "hero": {
+    "badge": "AI-Powered English Learning",
+    "title1": "Master English",
+    "title2": "With AI",
+    "subtitle": "Get instant IELTS band scores, grammar corrections, and a personal AI tutor available 24/7. Learn smarter, score higher.",
+    "startLearning": "Start Learning",
+    "tryChecker": "Try AI Checker",
+    "bandScore": "Band Score",
+    "grammarFixed": "Grammar fixed",
+    "aiTutor": "AI Tutor",
+    "bandProgression": "Band progression"
+  },
+  "auth": {
+    "welcomeBack": "Welcome back",
+    "loginSubtitle": "Sign in to continue your learning journey.",
+    "registerTitle": "Create your account",
+    "registerSubtitle": "Start mastering English with AI today.",
+    "forgotTitle": "Reset your password",
+    "forgotSubtitle": "Enter your email and we’ll send you a reset link.",
+    "noAccount": "Don’t have an account?",
+    "haveAccount": "Already have an account?",
+    "forgotPassword": "Forgot password?",
+    "rememberMe": "Remember me",
+    "quickLogin": "Quick demo login",
+    "sendResetLink": "Send reset link",
+    "resetSent": "Check your inbox",
+    "resetSentDesc": "We’ve sent a password reset link to your email.",
+    "backToLogin": "Back to login",
+    "iAmA": "I am a",
+    "invalidCredentials": "Invalid email or password.",
+    "passwordMin": "Password must be at least 4 characters."
+  },
+  "sidebar": {
+    "student": {
+      "overview": "Overview",
+      "aiChecker": "AI Writing Checker",
+      "tests": "IELTS Tests",
+      "vocabulary": "Vocabulary",
+      "speaking": "Speaking",
+      "progress": "Progress",
+      "homework": "Homework",
+      "leaderboard": "Leaderboard",
+      "profile": "Profile"
+    },
+    "teacher": {
+      "students": "Students",
+      "groups": "Groups",
+      "essays": "Essays",
+      "assignments": "Assignments",
+      "statistics": "Statistics",
+      "messages": "Messages",
+      "attendance": "Attendance"
+    },
+    "manager": {
+      "analytics": "Analytics",
+      "teachers": "Teachers",
+      "groups": "Groups",
+      "payments": "Payments",
+      "courses": "Courses",
+      "reports": "Reports"
+    },
+    "admin": {
+      "users": "Users",
+      "roles": "Roles",
+      "permissions": "Permissions",
+      "aiSettings": "AI Settings",
+      "subscription": "Subscription",
+      "analytics": "Analytics",
+      "database": "Database",
+      "logs": "Logs",
+      "api": "API Management"
+    }
+  },
+  "tutor": {
+    "title": "AI Tutor",
+    "subtitle": "Always here to help",
+    "placeholder": "Ask me anything about English…",
+    "greeting": "Hi! I’m your AI English tutor. How can I help you today?"
+  },
+  "topbar": {
+    "notifications": "Notifications",
+    "markAllRead": "Mark all read",
+    "noNotifications": "No new notifications"
+  },
+  "features": {
+    "badge": "Everything you need",
+    "title1": "One platform.",
+    "title2": "Seven AI engines.",
+    "subtitle": "From the first placement test to your target band — every part of your English journey is powered by purpose-built AI.",
+    "overallBand": "Overall Band",
+    "items": {
+      "essayChecker": {
+        "title": "AI Essay Checker",
+        "desc": "Submit any IELTS essay and receive an instant band score with task achievement, coherence, lexical and grammar breakdowns — plus a fully rewritten model answer."
+      },
+      "grammar": {
+        "title": "Grammar Correction",
+        "desc": "Every mistake highlighted, explained and fixed in context."
+      },
+      "ielts": {
+        "title": "IELTS Practice",
+        "desc": "Full mock tests for Reading, Listening, Writing & Speaking."
+      },
+      "speaking": {
+        "title": "Speaking Analysis",
+        "desc": "Record answers; AI scores fluency, pronunciation & range."
+      },
+      "progress": {
+        "title": "Progress Tracking",
+        "desc": "Watch your band climb across every skill, week by week."
+      },
+      "tutor": {
+        "title": "24/7 AI Tutor",
+        "desc": "A personal English tutor in your pocket. Ask anything, get explanations, drills and study plans tailored to your weak spots."
+      },
+      "vocab": {
+        "title": "Vocabulary Analyzer",
+        "desc": "Discover stronger, more academic word choices instantly."
+      }
+    }
+  },
+  "preview": {
+    "badge": "Built for everyone",
+    "title1": "A dashboard for",
+    "title2": "every role.",
+    "items": {
+      "grading": {
+        "title": "Instant AI grading",
+        "desc": "Essays pre-graded before a teacher even opens them."
+      },
+      "analytics": {
+        "title": "Live analytics",
+        "desc": "Band trends, attendance and performance in real time."
+      },
+      "gamified": {
+        "title": "Gamified learning",
+        "desc": "Streaks, badges and a class leaderboard that motivates."
+      }
+    },
+    "welcome": "Welcome back, Aziza",
+    "latestEssay": "Latest essay",
+    "bandScore": "Band score",
+    "skills": "Skills",
+    "weeklyActivity": "Weekly activity"
+  },
+  "testimonials": {
+    "badge": "Loved by learners",
+    "title1": "Results that",
+    "title2": "speak",
+    "items": [
+      {
+        "text": "The AI feedback caught grammar patterns my teacher missed. I improved a full band in two months.",
+        "role": "Band 6.0 → 7.5"
+      },
+      {
+        "text": "Getting an instant rewritten model answer for every essay completely changed how I study writing.",
+        "role": "University applicant"
+      },
+      {
+        "text": "I assign homework and ZUKKO pre-grades everything. I now spend my time on real feedback, not marking.",
+        "role": "IELTS Teacher"
+      }
+    ]
+  },
+  "pricing": {
+    "badge": "Simple pricing",
+    "title1": "Start free.",
+    "title2": "Scale when ready.",
+    "subtitle": "No hidden fees. Cancel anytime.",
+    "mostPopular": "Most popular",
+    "perMonth": "month",
+    "perForever": "forever",
+    "plans": {
+      "starter": {
+        "name": "Starter",
+        "tagline": "Try the AI essay checker",
+        "cta": "Start Free",
+        "features": [
+          "3 AI essay checks / month",
+          "Basic grammar correction",
+          "Level placement test",
+          "Community leaderboard"
+        ]
+      },
+      "pro": {
+        "name": "Pro Learner",
+        "tagline": "Serious IELTS preparation",
+        "cta": "Go Pro",
+        "features": [
+          "Unlimited AI essay checks",
+          "Full IELTS mock tests",
+          "AI Speaking evaluation",
+          "AI Tutor chat 24/7",
+          "Detailed band breakdown",
+          "Progress analytics"
+        ]
+      },
+      "academy": {
+        "name": "Academy",
+        "tagline": "For schools & teachers",
+        "cta": "Contact Sales",
+        "features": [
+          "Everything in Pro",
+          "Teacher dashboard",
+          "Group management",
+          "Custom test builder",
+          "Student analytics",
+          "Priority support"
+        ]
+      }
+    }
+  },
+  "faqSection": {
+    "badge": "Questions",
+    "title1": "Frequently",
+    "title2": "asked",
+    "items": [
+      {
+        "q": "How accurate is the AI band scoring?",
+        "a": "ZUKKO AI is calibrated against thousands of examiner-graded IELTS essays and aligns within ±0.5 of human examiners on the official band descriptors for Task Achievement, Coherence, Lexical Resource and Grammar."
+      },
+      {
+        "q": "Does the AI just give a score, or does it explain?",
+        "a": "Both. Every essay returns a band breakdown, highlighted grammar and vocabulary issues, a rewritten model answer, and actionable feedback so you understand exactly how to improve."
+      },
+      {
+        "q": "Can my school use ZUKKO AI for a whole class?",
+        "a": "Yes. The Academy plan gives teachers a full dashboard to assign homework, review essays, build custom tests and track every student's progress in one place."
+      },
+      {
+        "q": "Is my writing data private?",
+        "a": "Your essays are encrypted and never used to train third-party models. Admins control data retention and AI provider configuration at the system level."
+      },
+      {
+        "q": "Which exams are supported?",
+        "a": "We focus on IELTS Academic and General, with grammar, vocabulary and speaking modules that also help with TOEFL and general English fluency."
+      }
+    ]
+  },
+  "contact": {
+    "title1": "Ready to reach your",
+    "title2": "target band?",
+    "subtitle": "Join thousands of learners and dozens of schools already using ZUKKO AI. Have a question? Send us a message.",
+    "location": "Tashkent, Uzbekistan",
+    "sent": "Message sent!",
+    "sentDesc": "We'll get back to you within 24h.",
+    "fullName": "Full name",
+    "message": "Message",
+    "messagePlaceholder": "How can we help?",
+    "sendMessage": "Send message"
+  },
+  "footer": {
+    "tagline": "The AI-powered English learning platform for serious learners and the schools that teach them.",
+    "product": "Product",
+    "company": "Company",
+    "resources": "Resources",
+    "links": {
+      "features": "Features",
+      "pricing": "Pricing",
+      "aiChecker": "AI Checker",
+      "dashboard": "Dashboard",
+      "about": "About",
+      "blog": "Blog",
+      "careers": "Careers",
+      "contact": "Contact",
+      "ieltsGuide": "IELTS Guide",
+      "help": "Help Center",
+      "community": "Community",
+      "apiDocs": "API Docs"
+    },
+    "rights": "© 2026 ZUKKO AI. All rights reserved.",
+    "privacy": "Privacy",
+    "terms": "Terms",
+    "security": "Security"
+  },
+  "pages": {
+    "student": {
+      "overview": {
+        "welcome": "Welcome back, {{name}} 👋",
+        "subtitle": "Here's how your English journey is going.",
+        "checkEssay": "Check an essay",
+        "currentBand": "Current Band",
+        "essaysChecked": "Essays Checked",
+        "dayStreak": "Day Streak",
+        "testsTaken": "Tests Taken",
+        "bandProgression": "Band Progression",
+        "towardTarget": "Toward your 7.0 target",
+        "onTrack": "On track",
+        "skillBreakdown": "Skill Breakdown",
+        "strengthsGaps": "Your strengths & gaps",
+        "weeklyActivity": "Weekly Activity",
+        "homework": "Homework",
+        "viewAll": "View all",
+        "recentEssays": "Recent Essays",
+        "aiGraded": "AI graded",
+        "checking": "Checking",
+        "late": "Late",
+        "due": "Due"
+      },
+      "aiChecker": {
+        "title": "AI Writing Checker",
+        "subtitle": "Get an instant IELTS band score and detailed feedback.",
+        "prompt": "Essay prompt",
+        "yourEssay": "Your essay",
+        "loadSample": "Load sample",
+        "words": "words",
+        "checkEssay": "Check Essay",
+        "analyzing": "Analyzing your essay…",
+        "overallBand": "Overall Band",
+        "feedback": "Feedback",
+        "grammar": "Grammar",
+        "vocabulary": "Vocabulary",
+        "modelAnswer": "Model Answer",
+        "placeholder": "Paste or write your IELTS essay here…",
+        "result": "Result",
+        "emptyTitle": "Ready when you are",
+        "emptyDesc": "Write an essay and let the AI grade it."
+      },
+      "tests": {
+        "title": "IELTS Tests",
+        "subtitle": "Practice tests graded instantly by AI.",
+        "available": "Tests Available",
+        "completed": "Completed",
+        "avgScore": "Avg Score",
+        "bestBand": "Best Band",
+        "startTest": "Start Test",
+        "question": "Question",
+        "of": "of",
+        "exit": "Exit",
+        "finish": "Finish",
+        "complete": "Test Complete!",
+        "correct": "Correct",
+        "accuracy": "Accuracy",
+        "estBand": "Est. Band",
+        "retry": "Retry",
+        "backToTests": "Back to tests",
+        "questions": "Q",
+        "min": "min",
+        "taken": "taken"
+      },
+      "vocabulary": {
+        "title": "Vocabulary Builder",
+        "subtitle": "Master academic words with spaced-repetition flashcards.",
+        "aiCurated": "AI curated",
+        "mastery": "Mastery progress",
+        "words": "words",
+        "currentLevel": "Current level",
+        "flashcards": "Flashcards",
+        "tapReveal": "Tap to reveal meaning",
+        "flip": "Flip",
+        "iKnow": "I know it",
+        "wordList": "Word List"
+      },
+      "speaking": {
+        "title": "Speaking Practice",
+        "subtitle": "Record your answers and get instant AI pronunciation feedback.",
+        "aiEval": "AI evaluation",
+        "selectTask": "Select a speaking task to begin",
+        "willScore": "The AI will score fluency, pronunciation & grammar.",
+        "listen": "Listen",
+        "question": "Question",
+        "recording": "Recording… tap to stop",
+        "analyzed": "Recording analyzed",
+        "tapStart": "Tap to start recording",
+        "fluency": "Fluency",
+        "pronunciation": "Pronunciation",
+        "lexical": "Lexical",
+        "grammar": "Grammar"
+      },
+      "progress": {
+        "title": "My Progress",
+        "subtitle": "Track your IELTS journey over time.",
+        "improved": "+1.5 bands this year",
+        "currentBand": "Current Band",
+        "targetBand": "Target Band",
+        "toGo": "0.5 to go",
+        "studyStreak": "Study Streak",
+        "hoursMonth": "Hours This Month",
+        "bandProgression": "Band Progression",
+        "monthlyVsTarget": "Monthly average vs target",
+        "skillBreakdown": "Skill Breakdown",
+        "strengthsGaps": "Strengths & gaps",
+        "studyMinutes": "Study Minutes",
+        "thisWeek": "This week",
+        "skillTargets": "Skill Targets"
+      },
+      "homework": {
+        "title": "Homework",
+        "subtitle": "Assignments from your teacher.",
+        "pending": "Pending",
+        "overdue": "Overdue",
+        "completed": "Completed",
+        "nothingHere": "Nothing here",
+        "noHomework": "No homework in this category.",
+        "start": "Start"
+      },
+      "leaderboard": {
+        "title": "Leaderboard",
+        "subtitle": "Compete with learners across ZUKKO AI.",
+        "weekly": "Weekly",
+        "pts": "pts",
+        "fullRanking": "Full Ranking",
+        "you": "You"
+      },
+      "profile": {
+        "title": "Profile",
+        "subtitle": "Manage your account and preferences.",
+        "personalInfo": "Personal Information",
+        "dob": "Date of Birth",
+        "nativeLang": "Native Language",
+        "band": "Band",
+        "streak": "Streak",
+        "target": "Target",
+        "preferences": "Preferences",
+        "theme": "Theme",
+        "themeDesc": "Switch between dark and light mode",
+        "pushNotif": "Push notifications",
+        "pushDesc": "Homework reminders & AI feedback alerts",
+        "weeklyReport": "Weekly progress report",
+        "weeklyDesc": "Get a summary every Sunday by email"
+      }
+    },
+    "teacher": {
+      "students": {
+        "title": "My Students",
+        "subtitle": "Monitor and support your learners.",
+        "total": "Total Students",
+        "activeToday": "Active Today",
+        "atRisk": "At Risk",
+        "avgBand": "Avg Band",
+        "student": "Student",
+        "group": "Group",
+        "band": "Band",
+        "attendance": "Attendance",
+        "essays": "Essays",
+        "status": "Status",
+        "active": "Active",
+        "idle": "Idle",
+        "risk": "At risk"
+      },
+      "groups": {
+        "title": "Groups",
+        "subtitle": "Manage your teaching groups and schedules.",
+        "newGroup": "New Group",
+        "groups": "Groups",
+        "totalStudents": "Total Students",
+        "avgBand": "Avg Band",
+        "students": "Students",
+        "schedule": "Schedule",
+        "viewGroup": "View group"
+      },
+      "essays": {
+        "title": "Essay Review",
+        "subtitle": "AI pre-grades essays — you add the final touch.",
+        "aiAssisted": "AI assisted",
+        "needsReview": "Needs review",
+        "reviewed": "Reviewed",
+        "all": "All",
+        "allCaughtUp": "All caught up",
+        "noEssays": "No essays in this view.",
+        "selectEssay": "Select an essay",
+        "pickEssay": "Pick an essay from the queue to review.",
+        "aiBand": "AI Band",
+        "essayExcerpt": "Essay excerpt",
+        "yourFeedback": "Your feedback",
+        "feedbackPlaceholder": "Add comments for the student…",
+        "saveDraft": "Save draft",
+        "sendFeedback": "Send feedback",
+        "words": "words"
+      },
+      "assignments": {
+        "title": "Assignments",
+        "subtitle": "Create and track homework across your groups.",
+        "newAssignment": "New Assignment",
+        "createAssignment": "Create Assignment",
+        "assignTitle": "Title",
+        "group": "Group",
+        "type": "Type",
+        "submissions": "Submissions"
+      },
+      "statistics": {
+        "title": "Statistics",
+        "subtitle": "Class performance and engagement insights.",
+        "improving": "Improving",
+        "activeStudents": "Active Students",
+        "classAvgBand": "Class Avg Band",
+        "essaysGraded": "Essays Graded",
+        "avgAttendance": "Avg Attendance",
+        "classBandTrend": "Class Band Trend",
+        "sixMonth": "6-month average",
+        "skillCoverage": "Skill Coverage",
+        "classAverage": "Class average",
+        "bandDist": "Band Distribution",
+        "studentsPerBand": "Students per band score"
+      },
+      "messages": {
+        "title": "Messages",
+        "subtitle": "Stay in touch with your students.",
+        "online": "Online",
+        "noMessages": "No messages yet",
+        "typePlaceholder": "Type a message…"
+      },
+      "attendance": {
+        "title": "Attendance",
+        "subtitle": "Mark and track weekly attendance. Tap a cell to change.",
+        "thisWeek": "This week",
+        "students": "Students",
+        "attendanceRate": "Attendance Rate",
+        "sessions": "Sessions",
+        "student": "Student",
+        "rate": "Rate",
+        "present": "Present",
+        "late": "Late",
+        "absent": "Absent"
+      }
+    },
+    "manager": {
+      "analytics": {
+        "title": "Analytics",
+        "subtitle": "Business performance at a glance.",
+        "growing": "Growing",
+        "totalRevenue": "Total Revenue",
+        "activeStudents": "Active Students",
+        "teachers": "Teachers",
+        "avgBandLift": "Avg Band Lift",
+        "revenueStudents": "Revenue & Students",
+        "lastSixMonths": "Last 6 months",
+        "courseMix": "Course Mix",
+        "enrollmentByCourse": "Enrollment by course",
+        "teacherPerf": "Teacher Performance",
+        "studentsVsBand": "Students taught vs average band"
+      },
+      "teachers": {
+        "title": "Teachers",
+        "subtitle": "Manage your teaching staff and performance.",
+        "addTeacher": "Add Teacher",
+        "teachers": "Teachers",
+        "studentsTaught": "Students Taught",
+        "avgRating": "Avg Rating",
+        "topBand": "Top Band",
+        "students": "Students",
+        "groups": "Groups",
+        "band": "Band",
+        "allTeachers": "All Teachers",
+        "rating": "Rating"
+      },
+      "groups": {
+        "title": "Groups",
+        "subtitle": "All learning groups across the academy.",
+        "newGroup": "New Group",
+        "activeGroups": "Active Groups",
+        "enrolled": "Enrolled",
+        "avgBand": "Avg Band",
+        "students": "Students",
+        "schedule": "Schedule",
+        "leadTeacher": "Lead teacher"
+      },
+      "payments": {
+        "title": "Payments",
+        "subtitle": "Track tuition and revenue.",
+        "export": "Export",
+        "collected": "Collected",
+        "pending": "Pending",
+        "overdue": "Overdue",
+        "student": "Student",
+        "course": "Course",
+        "amount": "Amount",
+        "date": "Date",
+        "status": "Status",
+        "paid": "Paid",
+        "all": "All"
+      },
+      "courses": {
+        "title": "Courses",
+        "subtitle": "Manage your course catalog and pricing.",
+        "newCourse": "New Course",
+        "courses": "Courses",
+        "enrolled": "Enrolled",
+        "monthlyRevenue": "Monthly Revenue",
+        "completion": "Completion",
+        "students": "students",
+        "weeks": "weeks",
+        "capacity": "Capacity"
+      },
+      "reports": {
+        "title": "Reports",
+        "subtitle": "Generate and download business reports.",
+        "generateNew": "Generate New",
+        "revenueTrend": "Revenue Trend",
+        "usedInReport": "Used in monthly finance report",
+        "availableReports": "Available Reports"
+      }
+    },
+    "admin": {
+      "users": {
+        "title": "User Management",
+        "subtitle": "Manage all platform accounts.",
+        "addUser": "Add User",
+        "totalUsers": "Total Users",
+        "active": "Active",
+        "suspended": "Suspended",
+        "user": "User",
+        "joined": "Joined",
+        "status": "Status"
+      },
+      "roles": {
+        "title": "Roles",
+        "subtitle": "Define what each role can do.",
+        "newRole": "New Role",
+        "permissions": "permissions"
+      },
+      "permissions": {
+        "title": "Permissions",
+        "subtitle": "Fine-grained access control. Tap a cell to toggle.",
+        "rbac": "RBAC",
+        "permission": "Permission",
+        "savePermissions": "Save permissions"
+      },
+      "aiSettings": {
+        "title": "AI Settings",
+        "subtitle": "Configure the AI engine that powers ZUKKO.",
+        "aiEngine": "AI Engine",
+        "activeModels": "Active Models",
+        "selectModels": "Select grading & evaluation models",
+        "connected": "Connected",
+        "gradingParams": "Grading Parameters",
+        "tuneBehavior": "Tune AI behavior",
+        "temperature": "Temperature (creativity)",
+        "strictness": "Grading strictness",
+        "currentProfile": "Current profile",
+        "strict": "Strict — closely matches official examiner standards.",
+        "balanced": "Balanced — encouraging but fair.",
+        "lenient": "Lenient — motivational feedback for beginners.",
+        "featureToggles": "Feature Toggles",
+        "autoGrade": "Auto-grade essays on submit",
+        "autoGradeDesc": "AI scores essays instantly without teacher action",
+        "speakingEval": "AI Speaking evaluation",
+        "speakingEvalDesc": "Score pronunciation, fluency & grammar from audio",
+        "tutorChat": "24/7 AI Tutor chat",
+        "tutorChatDesc": "Students can chat with the AI tutor anytime",
+        "saveSettings": "Save settings"
+      },
+      "subscription": {
+        "title": "Subscription",
+        "subtitle": "Manage plans and billing.",
+        "totalSubscribers": "Total Subscribers",
+        "mrr": "MRR",
+        "proConversions": "Pro Conversions",
+        "churnRate": "Churn Rate",
+        "mostPopular": "Most popular",
+        "editPlan": "Edit plan",
+        "subsByPlan": "Subscribers by Plan"
+      },
+      "analytics": {
+        "title": "System Analytics",
+        "subtitle": "Platform-wide AI usage and health.",
+        "operational": "All systems operational",
+        "aiRequests": "AI Requests (mo)",
+        "avgLatency": "Avg Latency",
+        "uptime": "Uptime",
+        "tokenSpend": "Token Spend",
+        "apiCalls": "API Calls",
+        "thisWeek": "This week",
+        "aiFeatureUsage": "AI Feature Usage",
+        "byFeature": "By feature",
+        "platformGrowth": "Platform Growth",
+        "studentCount": "Student count over time"
+      },
+      "database": {
+        "title": "Database",
+        "subtitle": "Monitor storage and table health.",
+        "sync": "Sync",
+        "backup": "Backup",
+        "tables": "Tables",
+        "totalRows": "Total Rows",
+        "storageUsed": "Storage Used",
+        "queriesSec": "Queries/sec",
+        "storage": "Storage",
+        "storageOf": "220 MB of 1 GB used",
+        "table": "Table",
+        "rows": "Rows",
+        "size": "Size",
+        "growth": "24h Growth"
+      },
+      "logs": {
+        "title": "System Logs",
+        "subtitle": "Real-time platform activity.",
+        "errors": "errors",
+        "warnings": "warnings"
+      },
+      "api": {
+        "title": "API Management",
+        "subtitle": "Manage API keys and integrations.",
+        "newKey": "New Key",
+        "activeKeys": "Active Keys",
+        "totalRequests": "Total Requests",
+        "quotaUsed": "Quota Used",
+        "usageMonth": "Usage this month"
+      }
+    }
+  },
+  "filters": {
+    "all": "All",
+    "paid": "Paid",
+    "pending": "Pending",
+    "overdue": "Overdue",
+    "done": "Done",
+    "active": "Active",
+    "info": "Info",
+    "success": "Success",
+    "warning": "Warning",
+    "error": "Error",
+    "student": "Student",
+    "teacher": "Teacher",
+    "manager": "Manager",
+    "admin": "Admin",
+    "needsReview": "Needs review",
+    "reviewed": "Reviewed"
+  }
+}

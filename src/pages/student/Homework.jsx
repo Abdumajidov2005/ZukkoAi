@@ -6,6 +6,7 @@ import {
 import { SectionHeading, Badge } from "../../components/ui/index.jsx";
 import { Panel, IconTile, EmptyState } from "../../components/dashboard/shared.jsx";
 import { homeworkList } from "../../data/mockData";
+import { useLanguage } from "../../hooks/useLanguage";
 
 const typeIcon = { writing: PenLine, reading: BookOpen, listening: Headphones, vocabulary: BookOpen, speaking: Mic };
 const statusMeta = {
@@ -16,6 +17,7 @@ const statusMeta = {
 const filters = ["all", "pending", "overdue", "done"];
 
 export default function StudentHomework() {
+  const { t } = useLanguage();
   const [filter, setFilter] = useState("all");
   const list = homeworkList.filter((h) => filter === "all" || h.status === filter);
   const counts = {
@@ -26,25 +28,25 @@ export default function StudentHomework() {
 
   return (
     <div className="space-y-7">
-      <SectionHeading title="Homework" subtitle="Assignments from your teacher." />
+      <SectionHeading title={t("pages.student.homework.title")} subtitle={t("pages.student.homework.subtitle")} />
 
       <div className="grid grid-cols-3 gap-4">
         <Panel className="!p-4" delay={0}>
           <div className="flex items-center gap-3">
             <IconTile icon={Clock} accent="amber" />
-            <div><div className="text-xl font-semibold text-white">{counts.pending}</div><div className="text-xs text-white/40">Pending</div></div>
+            <div><div className="text-xl font-semibold text-white">{counts.pending}</div><div className="text-xs text-white/40">{t("pages.student.homework.pending")}</div></div>
           </div>
         </Panel>
         <Panel className="!p-4" delay={0.05}>
           <div className="flex items-center gap-3">
             <IconTile icon={AlertCircle} accent="red" />
-            <div><div className="text-xl font-semibold text-white">{counts.overdue}</div><div className="text-xs text-white/40">Overdue</div></div>
+            <div><div className="text-xl font-semibold text-white">{counts.overdue}</div><div className="text-xs text-white/40">{t("pages.student.homework.overdue")}</div></div>
           </div>
         </Panel>
         <Panel className="!p-4" delay={0.1}>
           <div className="flex items-center gap-3">
             <IconTile icon={CheckCircle2} accent="green" />
-            <div><div className="text-xl font-semibold text-white">{counts.done}</div><div className="text-xs text-white/40">Completed</div></div>
+            <div><div className="text-xl font-semibold text-white">{counts.done}</div><div className="text-xs text-white/40">{t("pages.student.homework.completed")}</div></div>
           </div>
         </Panel>
       </div>
@@ -54,13 +56,13 @@ export default function StudentHomework() {
           <button key={f} onClick={() => setFilter(f)}
             className={`rounded-full px-4 py-1.5 text-sm capitalize transition-colors ${
               filter === f ? "bg-primary-500/20 text-primary-300 border border-primary-500/30" : "text-white/50 hover:text-white/80 border border-transparent"
-            }`}>{f}</button>
+            }`}>{t(`filters.${f}`)}</button>
         ))}
       </div>
 
       <div className="space-y-3">
         {list.length === 0 ? (
-          <Panel><EmptyState icon={ClipboardList} title="Nothing here" subtitle="No homework in this category." /></Panel>
+          <Panel><EmptyState icon={ClipboardList} title={t("pages.student.homework.nothingHere")} subtitle={t("pages.student.homework.noHomework")} /></Panel>
         ) : (
           list.map((h, i) => {
             const TIcon = typeIcon[h.type] || ClipboardList;
@@ -83,7 +85,7 @@ export default function StudentHomework() {
                   <div className="mt-1 text-xs text-white/40">{h.due}</div>
                 </div>
                 {h.status !== "done" && (
-                  <button className="btn-primary !py-2 text-sm">Start</button>
+                  <button className="btn-primary !py-2 text-sm">{t("pages.student.homework.start")}</button>
                 )}
               </motion.div>
             );

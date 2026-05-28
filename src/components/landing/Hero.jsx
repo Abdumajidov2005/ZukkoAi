@@ -1,6 +1,7 @@
 import { motion } from "framer-motion";
 import { useNavigate } from "react-router-dom";
 import { Sparkles, ArrowRight, Wand2, CheckCircle2, Zap } from "lucide-react";
+import { useLanguage } from "../../hooks/useLanguage";
 
 const container = {
   hidden: {},
@@ -31,6 +32,7 @@ function FloatingCard({ className, delay, children }) {
 
 export default function Hero() {
   const navigate = useNavigate();
+  const { t } = useLanguage();
 
   return (
     <section className="relative pt-36 md:pt-44 pb-24 md:pb-32">
@@ -38,30 +40,29 @@ export default function Hero() {
         <motion.div variants={container} initial="hidden" animate="show" className="mx-auto max-w-4xl text-center">
           <motion.div variants={item} className="inline-flex items-center gap-2 rounded-full glass px-4 py-1.5 text-sm text-white/70">
             <Sparkles className="h-3.5 w-3.5 text-primary-400" />
-            Powered by GPT-4o · Whisper · ZUKKO Engine
+            {t("hero.badge")}
           </motion.div>
 
           <motion.h1
             variants={item}
             className="mt-7 font-display text-5xl sm:text-6xl md:text-7xl font-semibold leading-[1.02] tracking-tight text-white text-balance"
           >
-            Master English <br className="hidden sm:block" />
-            With <span className="gradient-text">AI</span>
+            {t("hero.title1")} <br className="hidden sm:block" />
+            <span className="gradient-text">{t("hero.title2")}</span>
           </motion.h1>
 
           <motion.p variants={item} className="mx-auto mt-6 max-w-2xl text-lg text-white/55 text-balance">
-            AI-powered IELTS preparation, instant essay evaluation, grammar correction
-            and a personalized learning path — built for serious learners and the schools that teach them.
+            {t("hero.subtitle")}
           </motion.p>
 
           <motion.div variants={item} className="mt-9 flex flex-wrap items-center justify-center gap-3">
             <button onClick={() => navigate("/register")} className="btn-primary group">
-              Start Learning
+              {t("hero.startLearning")}
               <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-1" />
             </button>
             <button onClick={() => navigate("/register")} className="btn-ghost group">
               <Wand2 className="h-4 w-4 text-primary-400" />
-              Try AI Checker
+              {t("hero.tryChecker")}
             </button>
           </motion.div>
 
@@ -85,14 +86,14 @@ export default function Hero() {
             <div className="flex items-center gap-2.5">
               <div className="grid h-9 w-9 place-items-center rounded-lg bg-emerald-500/20 text-emerald-400 font-bold">7.5</div>
               <div>
-                <div className="text-xs font-medium text-white">Band Score</div>
+                <div className="text-xs font-medium text-white">{t("hero.bandScore")}</div>
                 <div className="text-[10px] text-white/40">+1.0 this month</div>
               </div>
             </div>
           </FloatingCard>
 
           <FloatingCard className="hidden lg:block -right-8 top-32 w-48" delay={1}>
-            <div className="text-xs font-medium text-white mb-1.5">Grammar fixed</div>
+            <div className="text-xs font-medium text-white mb-1.5">{t("hero.grammarFixed")}</div>
             <div className="flex items-center gap-2 text-[11px]">
               <span className="line-through text-rose-400/70">depend of</span>
               <ArrowRight className="h-3 w-3 text-white/30" />
@@ -101,7 +102,7 @@ export default function Hero() {
           </FloatingCard>
 
           <FloatingCard className="hidden lg:block right-10 -bottom-6 w-40" delay={1.2}>
-            <div className="text-[10px] text-white/40 mb-1">AI Tutor</div>
+            <div className="text-[10px] text-white/40 mb-1">{t("hero.aiTutor")}</div>
             <div className="text-xs text-white">"Try linking ideas with <span className="text-primary-400">'consequently'</span>…"</div>
           </FloatingCard>
 
@@ -143,7 +144,7 @@ export default function Hero() {
                   </div>
                   {/* fake chart */}
                   <div className="rounded-xl glass p-4">
-                    <div className="text-[11px] text-white/50 mb-3">Band progression</div>
+                    <div className="text-[11px] text-white/50 mb-3">{t("hero.bandProgression")}</div>
                     <div className="flex items-end gap-2 h-24">
                       {[40, 52, 50, 64, 78, 82].map((h, i) => (
                         <motion.div

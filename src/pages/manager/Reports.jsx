@@ -6,6 +6,7 @@ import { FileBarChart, Download, FileText, Calendar, TrendingUp, DollarSign, Use
 import { SectionHeading, Badge } from "../../components/ui/index.jsx";
 import { Panel, IconTile, tooltipStyle } from "../../components/dashboard/shared.jsx";
 import { revenueData } from "../../data/mockData";
+import { useLanguage } from "../../hooks/useLanguage";
 
 const reports = [
   { id: "r1", name: "Monthly Revenue Report", period: "May 2026", type: "Finance", icon: DollarSign, accent: "primary", size: "2.4 MB" },
@@ -16,12 +17,13 @@ const reports = [
 ];
 
 export default function ManagerReports() {
+  const { t } = useLanguage();
   return (
     <div className="space-y-7">
-      <SectionHeading title="Reports" subtitle="Generate and download business reports."
-        action={<button className="btn-primary text-sm"><FileBarChart className="h-4 w-4" /> Generate New</button>} />
+      <SectionHeading title={t("pages.manager.reports.title")} subtitle={t("pages.manager.reports.subtitle")}
+        action={<button className="btn-primary text-sm"><FileBarChart className="h-4 w-4" /> {t("pages.manager.reports.generateNew")}</button>} />
 
-      <Panel title="Revenue Trend" subtitle="Used in monthly finance report" delay={0.05}>
+      <Panel title={t("pages.manager.reports.revenueTrend")} subtitle={t("pages.manager.reports.usedInReport")} delay={0.05}>
         <ResponsiveContainer width="100%" height={220}>
           <LineChart data={revenueData}>
             <CartesianGrid strokeDasharray="3 3" stroke="rgba(255,255,255,0.05)" />
@@ -33,7 +35,7 @@ export default function ManagerReports() {
         </ResponsiveContainer>
       </Panel>
 
-      <Panel title="Available Reports" delay={0.1}>
+      <Panel title={t("pages.manager.reports.availableReports")} delay={0.1}>
         <div className="space-y-2">
           {reports.map((r, i) => (
             <motion.div key={r.id} initial={{ opacity: 0, x: -12 }} animate={{ opacity: 1, x: 0 }}
@@ -48,7 +50,7 @@ export default function ManagerReports() {
                   <span>{r.size}</span>
                 </div>
               </div>
-              <button className="btn-ghost !py-2 text-sm"><Download className="h-4 w-4" /> Download</button>
+              <button className="btn-ghost !py-2 text-sm"><Download className="h-4 w-4" /> {t("common.download")}</button>
             </motion.div>
           ))}
         </div>

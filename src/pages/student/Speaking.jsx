@@ -6,8 +6,10 @@ import {
 import { SectionHeading, Badge } from "../../components/ui/index.jsx";
 import { IconTile } from "../../components/dashboard/shared.jsx";
 import { speakingTasks } from "../../data/mockData";
+import { useLanguage } from "../../hooks/useLanguage";
 
 export default function StudentSpeaking() {
+  const { t } = useLanguage();
   const [active, setActive] = useState(null);
   const [recording, setRecording] = useState(false);
   const [seconds, setSeconds] = useState(0);
@@ -45,31 +47,31 @@ export default function StudentSpeaking() {
   return (
     <div className="space-y-7">
       <SectionHeading
-        title="Speaking Practice"
-        subtitle="Record your answers and get instant AI pronunciation feedback."
-        action={<Badge color="secondary"><Sparkles className="h-3 w-3" /> AI evaluation</Badge>}
+        title={t("pages.student.speaking.title")}
+        subtitle={t("pages.student.speaking.subtitle")}
+        action={<Badge color="secondary"><Sparkles className="h-3 w-3" /> {t("pages.student.speaking.aiEval")}</Badge>}
       />
 
       <div className="grid gap-6 lg:grid-cols-3">
         {/* task list */}
         <div className="space-y-4 lg:col-span-1">
-          {speakingTasks.map((t, i) => (
-            <motion.button key={t.id} initial={{ opacity: 0, x: -16 }} animate={{ opacity: 1, x: 0 }}
-              transition={{ delay: i * 0.06 }} onClick={() => open(t)}
-              disabled={t.status === "locked"}
+          {speakingTasks.map((task, i) => (
+            <motion.button key={task.id} initial={{ opacity: 0, x: -16 }} animate={{ opacity: 1, x: 0 }}
+              transition={{ delay: i * 0.06 }} onClick={() => open(task)}
+              disabled={task.status === "locked"}
               className={`glass w-full rounded-2xl p-5 text-left transition-all ${
-                active?.id === t.id ? "border-primary-500/60 shadow-glow" : ""
-              } ${t.status === "locked" ? "cursor-not-allowed opacity-50" : "hover:border-primary-500/40"}`}>
+                active?.id === task.id ? "border-primary-500/60 shadow-glow" : ""
+              } ${task.status === "locked" ? "cursor-not-allowed opacity-50" : "hover:border-primary-500/40"}`}>
               <div className="flex items-start justify-between">
-                <IconTile icon={t.status === "locked" ? Lock : Mic} accent={t.status === "locked" ? "amber" : "primary"} size="lg" />
-                <Badge color="gray">{t.part}</Badge>
+                <IconTile icon={task.status === "locked" ? Lock : Mic} accent={task.status === "locked" ? "amber" : "primary"} size="lg" />
+                <Badge color="gray">{task.part}</Badge>
               </div>
-              <h3 className="mt-3 font-medium text-white">{t.title}</h3>
+              <h3 className="mt-3 font-medium text-white">{task.title}</h3>
               <div className="mt-1 flex items-center gap-1 text-xs text-white/40">
-                <Clock className="h-3 w-3" /> {t.duration}
+                <Clock className="h-3 w-3" /> {task.duration}
               </div>
               <div className="mt-3 flex flex-wrap gap-1.5">
-                {t.topics.map((tp) => <Badge key={tp} color="secondary">{tp}</Badge>)}
+                {task.topics.map((tp) => <Badge key={tp} color="secondary">{tp}</Badge>)}
               </div>
             </motion.button>
           ))}
@@ -85,8 +87,8 @@ export default function StudentSpeaking() {
                   <div className="mx-auto mb-4 grid h-16 w-16 place-items-center rounded-2xl bg-primary-500/10 text-primary-400">
                     <Mic className="h-7 w-7" />
                   </div>
-                  <p className="text-white/70">Select a speaking task to begin</p>
-                  <p className="mt-1 text-sm text-white/40">The AI will score fluency, pronunciation & grammar.</p>
+                  <p className="text-white/70">{t("pages.student.speaking.selectTask")}</p>
+                  <p className="mt-1 text-sm text-white/40">{t("pages.student.speaking.willScore")}</p>
                 </div>
               </motion.div>
             ) : (
@@ -97,11 +99,11 @@ export default function StudentSpeaking() {
                     <Badge color="primary">{active.part}</Badge>
                     <h3 className="mt-2 font-display text-xl font-semibold text-white">{active.title}</h3>
                   </div>
-                  <button className="btn-ghost text-sm"><Volume2 className="h-4 w-4" /> Listen</button>
+                  <button className="btn-ghost text-sm"><Volume2 className="h-4 w-4" /> {t("pages.student.speaking.listen")}</button>
                 </div>
 
                 <div className="mt-4 rounded-xl bg-white/[0.03] p-4 text-sm text-white/70">
-                  <p className="font-medium text-white/90">Question</p>
+                  <p className="font-medium text-white/90">{t("pages.student.speaking.question")}</p>
                   <p className="mt-1">Describe {active.topics[0].toLowerCase()} that is important to you. You should say what it is, why it matters, and how it affects your daily life.</p>
                 </div>
 
@@ -115,7 +117,7 @@ export default function StudentSpeaking() {
                     {recording && <span className="absolute inset-0 animate-ping rounded-full bg-rose-500/30" />}
                   </button>
                   <p className="mt-4 font-mono text-2xl text-white">{mmss}</p>
-                  <p className="text-xs text-white/40">{recording ? "Recording… tap to stop" : result ? "Recording analyzed" : "Tap to start recording"}</p>
+                  <p className="text-xs text-white/40">{recording ? t("pages.student.speaking.recording") : result ? t("pages.student.speaking.analyzed") : t("pages.student.speaking.tapStart")}</p>
                 </div>
 
                 {/* AI result */}
@@ -125,15 +127,15 @@ export default function StudentSpeaking() {
                       className="mt-6 rounded-2xl border border-primary-500/20 bg-primary-500/[0.04] p-5">
                       <div className="flex items-center justify-between">
                         <div className="flex items-center gap-2 text-sm font-medium text-white">
-                          <Sparkles className="h-4 w-4 text-secondary-400" /> AI Evaluation
+                          <Sparkles className="h-4 w-4 text-secondary-400" /> {t("pages.student.speaking.aiEval")}
                         </div>
                         <div className="text-right">
                           <div className="text-2xl font-semibold gradient-text">{result.band}</div>
-                          <div className="text-[11px] text-white/40">Est. Band</div>
+                          <div className="text-[11px] text-white/40">{t("pages.student.tests.estBand")}</div>
                         </div>
                       </div>
                       <div className="mt-4 grid grid-cols-2 gap-3 sm:grid-cols-4">
-                        {[["Fluency", result.fluency], ["Pronunciation", result.pronunciation], ["Lexical", result.lexical], ["Grammar", result.grammar]].map(([k, v]) => (
+                        {[[t("pages.student.speaking.fluency"), result.fluency], [t("pages.student.speaking.pronunciation"), result.pronunciation], [t("pages.student.speaking.lexical"), result.lexical], [t("pages.student.speaking.grammar"), result.grammar]].map(([k, v]) => (
                           <div key={k} className="rounded-xl bg-white/[0.03] p-3 text-center">
                             <div className="text-lg font-semibold text-white">{v}</div>
                             <div className="text-[11px] text-white/40">{k}</div>

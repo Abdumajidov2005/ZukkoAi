@@ -2,6 +2,7 @@ import { motion } from "framer-motion";
 import { BookOpen, Users, Clock, DollarSign, Plus, TrendingUp } from "lucide-react";
 import { SectionHeading, Badge } from "../../components/ui/index.jsx";
 import { Panel, IconTile } from "../../components/dashboard/shared.jsx";
+import { useLanguage } from "../../hooks/useLanguage";
 
 const courses = [
   { name: "IELTS Prep", students: 102, price: 120, weeks: 12, level: "Upper-Int → Advanced", color: "#7C3AED", fill: 90 },
@@ -11,20 +12,21 @@ const courses = [
 ];
 
 export default function ManagerCourses() {
+  const { t } = useLanguage();
   const totalStudents = courses.reduce((a, c) => a + c.students, 0);
   const totalRevenue = courses.reduce((a, c) => a + c.students * c.price, 0);
 
   return (
     <div className="space-y-7">
-      <SectionHeading title="Courses" subtitle="Manage your course catalog and pricing."
-        action={<button className="btn-primary text-sm"><Plus className="h-4 w-4" /> New Course</button>} />
+      <SectionHeading title={t("pages.manager.courses.title")} subtitle={t("pages.manager.courses.subtitle")}
+        action={<button className="btn-primary text-sm"><Plus className="h-4 w-4" /> {t("pages.manager.courses.newCourse")}</button>} />
 
       <div className="grid grid-cols-2 gap-4 lg:grid-cols-4">
         {[
-          { icon: BookOpen, label: "Courses", value: courses.length, accent: "primary" },
-          { icon: Users, label: "Enrolled", value: totalStudents, accent: "secondary" },
-          { icon: DollarSign, label: "Monthly Revenue", value: `$${(totalRevenue / 1000).toFixed(1)}K`, accent: "primary" },
-          { icon: TrendingUp, label: "Completion", value: "82%", accent: "secondary" },
+          { icon: BookOpen, label: t("pages.manager.courses.courses"), value: courses.length, accent: "primary" },
+          { icon: Users, label: t("pages.manager.courses.enrolled"), value: totalStudents, accent: "secondary" },
+          { icon: DollarSign, label: t("pages.manager.courses.monthlyRevenue"), value: `$${(totalRevenue / 1000).toFixed(1)}K`, accent: "primary" },
+          { icon: TrendingUp, label: t("pages.manager.courses.completion"), value: "82%", accent: "secondary" },
         ].map((s, i) => (
           <Panel key={s.label} className="!p-4" delay={i * 0.05}>
             <div className="flex items-center gap-3">
@@ -53,13 +55,13 @@ export default function ManagerCourses() {
             </div>
 
             <div className="mt-4 flex gap-4 text-sm text-white/50">
-              <span className="flex items-center gap-1.5"><Users className="h-3.5 w-3.5" /> {c.students} students</span>
-              <span className="flex items-center gap-1.5"><Clock className="h-3.5 w-3.5" /> {c.weeks} weeks</span>
+              <span className="flex items-center gap-1.5"><Users className="h-3.5 w-3.5" /> {c.students} {t("pages.manager.courses.students")}</span>
+              <span className="flex items-center gap-1.5"><Clock className="h-3.5 w-3.5" /> {c.weeks} {t("pages.manager.courses.weeks")}</span>
             </div>
 
             <div className="mt-4">
               <div className="mb-1.5 flex items-center justify-between text-xs">
-                <span className="text-white/50">Capacity</span>
+                <span className="text-white/50">{t("pages.manager.courses.capacity")}</span>
                 <span className="text-white/70">{c.fill}%</span>
               </div>
               <div className="h-2 w-full overflow-hidden rounded-full bg-white/10">

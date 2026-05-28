@@ -4,11 +4,14 @@ import { Menu, Search, Bell, Sun, Moon, Sparkles } from "lucide-react";
 import { useUIStore } from "../../store/uiStore";
 import { useAuthStore } from "../../store/authStore";
 import { useTheme } from "../../hooks/useTheme";
+import { useLanguage } from "../../hooks/useLanguage";
+import LanguageSwitcher from "../ui/LanguageSwitcher";
 
 export default function Topbar({ onOpenTutor }) {
   const { setMobileNav, notifications, markAllRead } = useUIStore();
   const user = useAuthStore((s) => s.user);
   const { theme, toggleTheme } = useTheme();
+  const { t } = useLanguage();
   const [notifOpen, setNotifOpen] = useState(false);
   const unread = notifications.filter((n) => !n.read).length;
 
@@ -23,7 +26,7 @@ export default function Topbar({ onOpenTutor }) {
         <div className="relative flex-1 max-w-md">
           <Search className="absolute left-3.5 top-1/2 -translate-y-1/2 h-4 w-4 text-white/30" />
           <input
-            placeholder="Search…"
+            placeholder={t("common.search")}
             className="w-full rounded-xl bg-white/5 border border-white/10 py-2 pl-10 pr-4 text-sm text-white placeholder:text-white/30 outline-none focus:border-primary-500/40 transition-colors"
           />
         </div>
@@ -35,9 +38,12 @@ export default function Topbar({ onOpenTutor }) {
               onClick={onOpenTutor}
               className="hidden sm:flex items-center gap-2 rounded-xl bg-gradient-to-r from-primary-600/80 to-secondary-500/80 px-3.5 py-2 text-sm font-medium text-white shadow-glow hover:-translate-y-0.5 transition-transform"
             >
-              <Sparkles className="h-4 w-4" /> AI Tutor
+              <Sparkles className="h-4 w-4" /> {t("tutor.title")}
             </button>
           )}
+
+          {/* language */}
+          <LanguageSwitcher variant="compact" />
 
           {/* theme */}
           <button onClick={toggleTheme} className="grid h-9 w-9 place-items-center rounded-xl glass text-white/70 hover:text-white transition-colors">
@@ -68,8 +74,8 @@ export default function Topbar({ onOpenTutor }) {
                     className="absolute right-0 z-40 mt-2 w-80 rounded-2xl glass-strong shadow-card overflow-hidden"
                   >
                     <div className="flex items-center justify-between border-b border-white/5 px-4 py-3">
-                      <span className="text-sm font-medium text-white">Notifications</span>
-                      <span className="text-xs text-primary-400">Mark all read</span>
+                      <span className="text-sm font-medium text-white">{t("topbar.notifications")}</span>
+                      <span className="text-xs text-primary-400">{t("topbar.markAllRead")}</span>
                     </div>
                     <div className="max-h-80 overflow-y-auto">
                       {notifications.map((n) => (

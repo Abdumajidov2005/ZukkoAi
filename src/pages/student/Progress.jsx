@@ -6,22 +6,24 @@ import { TrendingUp, Target, Award, Calendar, Flame } from "lucide-react";
 import { SectionHeading, Badge, StatCard, ProgressBar } from "../../components/ui/index.jsx";
 import { Panel, tooltipStyle } from "../../components/dashboard/shared.jsx";
 import { progressData, skillRadar, weeklyActivity } from "../../data/mockData";
+import { useLanguage } from "../../hooks/useLanguage";
 
 export default function StudentProgress() {
+  const { t } = useLanguage();
   return (
     <div className="space-y-7">
-      <SectionHeading title="My Progress" subtitle="Track your IELTS journey over time."
-        action={<Badge color="green"><TrendingUp className="h-3 w-3" /> +1.5 bands this year</Badge>} />
+      <SectionHeading title={t("pages.student.progress.title")} subtitle={t("pages.student.progress.subtitle")}
+        action={<Badge color="green"><TrendingUp className="h-3 w-3" /> {t("pages.student.progress.improved")}</Badge>} />
 
       <div className="grid grid-cols-2 gap-4 lg:grid-cols-4">
-        <StatCard icon={Award} label="Current Band" value="6.5" change="+1.0" accent="primary" delay={0} />
-        <StatCard icon={Target} label="Target Band" value="7.0" change="0.5 to go" trend="neutral" accent="secondary" delay={0.05} />
-        <StatCard icon={Flame} label="Study Streak" value="12 days" change="+3" accent="primary" delay={0.1} />
-        <StatCard icon={Calendar} label="Hours This Month" value="42h" change="+8h" accent="secondary" delay={0.15} />
+        <StatCard icon={Award} label={t("pages.student.progress.currentBand")} value="6.5" change="+1.0" accent="primary" delay={0} />
+        <StatCard icon={Target} label={t("pages.student.progress.targetBand")} value="7.0" change={t("pages.student.progress.toGo")} trend="neutral" accent="secondary" delay={0.05} />
+        <StatCard icon={Flame} label={t("pages.student.progress.studyStreak")} value="12 days" change="+3" accent="primary" delay={0.1} />
+        <StatCard icon={Calendar} label={t("pages.student.progress.hoursMonth")} value="42h" change="+8h" accent="secondary" delay={0.15} />
       </div>
 
       <div className="grid gap-4 lg:grid-cols-3">
-        <Panel title="Band Progression" subtitle="Monthly average vs target" className="lg:col-span-2" delay={0.1}>
+        <Panel title={t("pages.student.progress.bandProgression")} subtitle={t("pages.student.progress.monthlyVsTarget")} className="lg:col-span-2" delay={0.1}>
           <ResponsiveContainer width="100%" height={260}>
             <ComposedChart data={progressData}>
               <defs>
@@ -40,7 +42,7 @@ export default function StudentProgress() {
           </ResponsiveContainer>
         </Panel>
 
-        <Panel title="Skill Breakdown" subtitle="Strengths & gaps" delay={0.15}>
+        <Panel title={t("pages.student.progress.skillBreakdown")} subtitle={t("pages.student.progress.strengthsGaps")} delay={0.15}>
           <ResponsiveContainer width="100%" height={260}>
             <RadarChart data={skillRadar} outerRadius="70%">
               <PolarGrid stroke="rgba(255,255,255,0.1)" />
@@ -53,7 +55,7 @@ export default function StudentProgress() {
       </div>
 
       <div className="grid gap-4 lg:grid-cols-3">
-        <Panel title="Study Minutes" subtitle="This week" className="lg:col-span-2" delay={0.2}>
+        <Panel title={t("pages.student.progress.studyMinutes")} subtitle={t("pages.student.progress.thisWeek")} className="lg:col-span-2" delay={0.2}>
           <ResponsiveContainer width="100%" height={220}>
             <BarChart data={weeklyActivity}>
               <CartesianGrid strokeDasharray="3 3" stroke="rgba(255,255,255,0.05)" vertical={false} />
@@ -64,7 +66,7 @@ export default function StudentProgress() {
           </ResponsiveContainer>
         </Panel>
 
-        <Panel title="Skill Targets" delay={0.25}>
+        <Panel title={t("pages.student.progress.skillTargets")} delay={0.25}>
           <div className="space-y-4">
             {skillRadar.map((s) => (
               <div key={s.skill}>
