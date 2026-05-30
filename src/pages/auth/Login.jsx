@@ -5,7 +5,7 @@ import { Mail, Lock, Eye, EyeOff, ArrowRight, Loader2, Zap } from "lucide-react"
 import AuthLayout from "../../components/layout/AuthLayout";
 import { useAuthStore } from "../../store/authStore";
 import { useLanguage } from "../../hooks/useLanguage";
-import { ROLE_HOME } from "../../data/mockData";
+import { ROLE_HOME } from "../../store/authStore";
 
 const DEMO = [
   { role: "Student", email: "student@zukko.ai" },

@@ -6,7 +6,7 @@ import AuthLayout from "../../components/layout/AuthLayout";
 import { InputField } from "./Login";
 import { useAuthStore } from "../../store/authStore";
 import { useLanguage } from "../../hooks/useLanguage";
-import { ROLE_HOME } from "../../data/mockData";
+import { ROLE_HOME } from "../../store/authStore";
 
 const ROLES = [
   { id: "student", icon: GraduationCap },

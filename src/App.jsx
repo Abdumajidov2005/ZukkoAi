@@ -114,7 +114,7 @@ export default function App() {
         <Route
           path="/manager"
           element={
-            <ProtectedRoute roles={["manager"]}>
+            <ProtectedRoute roles={["manager", "center"]}>
               <DashboardLayout />
             </ProtectedRoute>
           }

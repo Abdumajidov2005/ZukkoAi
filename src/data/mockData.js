@@ -11,6 +11,7 @@ export const DEMO_USERS = [
 ];
 
 export const ROLE_HOME = {
+  center: "/manager/analytics",  // backend "center" → frontend "manager" sahifasi
   student: "/app/overview",
   teacher: "/teacher/students",
   manager: "/manager/analytics",
