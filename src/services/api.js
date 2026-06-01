@@ -185,3 +185,35 @@ export const paymentsApi = {
   history:   (p={})  => api.get(`/api/payments/history/?${new URLSearchParams(p)}`),
   getDetail: (id)    => api.get(`/api/payments/${id}/`),
 };
+
+
+// ── DEBUG HELPER (development da konsolga chiqaradi) ──────────
+// Backenddan nimalar kelayotganini ko'rish uchun
+// Bu faqat development da ishlaydi, production da avtomatik o'chadi
+if (import.meta.env.DEV) {
+  const _origRegister = authApi.register.bind(authApi);
+  authApi.register = async (payload) => {
+    console.log("[REGISTER] yuborilayapti:", payload);
+    try {
+      const res = await _origRegister(payload);
+      console.log("[REGISTER] javob:", res);
+      return res;
+    } catch (err) {
+      console.error("[REGISTER] xato:", err.status, err.data);
+      throw err;
+    }
+  };
+
+  const _origLogin = authApi.login.bind(authApi);
+  authApi.login = async (payload) => {
+    console.log("[LOGIN] yuborilayapti:", { username: payload.username, password: "***" });
+    try {
+      const res = await _origLogin(payload);
+      console.log("[LOGIN] muvaffaqiyatli, payload:", JSON.parse(atob(res.access.split(".")[1])));
+      return res;
+    } catch (err) {
+      console.error("[LOGIN] xato:", err.status, err.data);
+      throw err;
+    }
+  };
+}

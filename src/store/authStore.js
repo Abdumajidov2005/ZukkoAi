@@ -3,13 +3,10 @@ import { persist } from "zustand/middleware";
 import { DEMO_USERS } from "../data/mockData";
 import { USE_MOCK, authApi, setToken, setRefreshToken } from "../services/api";
 
-// Backend rollarini frontend rollarga moslashtirish
-// Backend: student | teacher | center | admin
-// Frontend: student | teacher | manager | admin
 const ROLE_MAP = {
   student: "student",
   teacher: "teacher",
-  center:  "manager",   // backend "center" → frontend "manager"
+  center:  "manager",
   admin:   "admin",
 };
 
@@ -24,7 +21,6 @@ function makeAvatar(fullname = "") {
   return fullname.split(" ").map((n) => n[0]).join("").slice(0, 2).toUpperCase();
 }
 
-// JWT payload decode (base64url)
 function decodeJWT(token) {
   try {
     const base64 = token.split(".")[1].replace(/-/g, "+").replace(/_/g, "/");
@@ -34,10 +30,9 @@ function decodeJWT(token) {
   }
 }
 
-// JWT dan user object yasash
 function userFromPayload(payload, fallbackEmail = "") {
-  const rawRole = payload.role || "student";
-  const role    = ROLE_MAP[rawRole] || rawRole;
+  const rawRole  = payload.role || "student";
+  const role     = ROLE_MAP[rawRole] || rawRole;
   const fullname = payload.full_name || payload.username || fallbackEmail.split("@")[0];
   return {
     id:       payload.user_id,
@@ -49,6 +44,13 @@ function userFromPayload(payload, fallbackEmail = "") {
   };
 }
 
+// Register javobidan username olish
+// Backend: { full_name, email, password, role } → { full_name, email, role, username?, ... }
+function extractUsername(registerResponse, fallbackEmail) {
+  // Backend username qaytarishi mumkin yoki email dan olamiz
+  return registerResponse?.username || fallbackEmail.split("@")[0];
+}
+
 export const useAuthStore = create(
   persist(
     (set, get) => ({
@@ -57,18 +59,32 @@ export const useAuthStore = create(
       isAuthenticated: false,
 
       // ── LOGIN ──────────────────────────────────────────────
-      login: async ({ email, password }) => {
+      // username — bu Django username (email bilan bir xil bo'lishi mumkin yoki alohida)
+      login: async ({ email, password, username }) => {
         if (!USE_MOCK) {
           try {
-            // /token/ → { access, refresh }
-            const data = await authApi.login({ username: email, password });
+            // Avval username bilan sinab ko'ramiz, bo'lmasa email bilan
+            const loginId = username || email;
+            const data = await authApi.login({ username: loginId, password });
             setToken(data.access);
             setRefreshToken(data.refresh);
             const payload = decodeJWT(data.access);
-            const user    = userFromPayload(payload, email);
+            const user    = userFromPayload(payload, email || loginId);
             set({ user, token: data.access, isAuthenticated: true });
             return { ok: true, user };
           } catch (err) {
+            // Agar username bilan xato bo'lsa va email boshqacha bo'lsa, email bilan urinib ko'r
+            if (username && username !== email && email) {
+              try {
+                const data2 = await authApi.login({ username: email, password });
+                setToken(data2.access);
+                setRefreshToken(data2.refresh);
+                const payload2 = decodeJWT(data2.access);
+                const user2    = userFromPayload(payload2, email);
+                set({ user: user2, token: data2.access, isAuthenticated: true });
+                return { ok: true, user: user2 };
+              } catch {}
+            }
             const msg =
               err.data?.detail ||
               err.data?.non_field_errors?.[0] ||
@@ -80,13 +96,12 @@ export const useAuthStore = create(
         // mock
         await new Promise((r) => setTimeout(r, 600));
         const found = DEMO_USERS.find(
-          (u) => u.email.toLowerCase() === email.toLowerCase() && u.password === password
+          (u) => u.email.toLowerCase() === (email || "").toLowerCase() && u.password === password
         );
         if (!found) return { ok: false, error: "Email yoki parol noto'g'ri." };
         const { password: _pw, ...safeUser } = found;
-        const token = "demo.jwt." + btoa(found.id);
-        setToken(token);
-        set({ user: safeUser, token, isAuthenticated: true });
+        setToken("demo.jwt." + btoa(found.id));
+        set({ user: safeUser, token: "demo.jwt." + btoa(found.id), isAuthenticated: true });
         return { ok: true, user: safeUser };
       },
 
@@ -94,14 +109,26 @@ export const useAuthStore = create(
       register: async ({ fullname, email, password, role = "student" }) => {
         if (!USE_MOCK) {
           try {
-            // Backend "center" qabul qiladi manager o'rniga
             const backendRole = role === "manager" ? "center" : role;
-            await authApi.register({ full_name: fullname, email, password, role: backendRole });
-            // Register bo'lgach login qilish
-            return await get().login({ email, password });
+            // Register qilish
+            const regData = await authApi.register({
+              full_name: fullname,
+              email,
+              password,
+              role: backendRole,
+            });
+
+            // Register javobidan username olish
+            // Backend username qaytarsa ishlatamiz, bo'lmasa email bilan urinib ko'ramiz
+            const username = extractUsername(regData, email);
+
+            // Login qilish — username bilan ham, email bilan ham urinib ko'ramiz
+            return await get().login({ email, password, username });
+
           } catch (err) {
             const msg =
               err.data?.email?.[0] ||
+              err.data?.username?.[0] ||
               err.data?.full_name?.[0] ||
               err.data?.password?.[0] ||
               err.data?.detail ||

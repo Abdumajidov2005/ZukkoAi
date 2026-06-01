@@ -53,10 +53,9 @@ export default function Sidebar() {
             to={item.to}
             onClick={() => setMobileNav(false)}
             className={({ isActive }) =>
-              `group flex items-center gap-3 rounded-xl px-3 py-2.5 text-sm transition-all ${
-                isActive
-                  ? "bg-gradient-to-r from-primary-500/20 to-secondary-500/10 text-white border border-primary-500/30"
-                  : "text-white/55 hover:text-white hover:bg-white/5 border border-transparent"
+              `group flex items-center gap-3 rounded-xl px-3 py-2.5 text-sm transition-all ${isActive
+                ? "bg-gradient-to-r from-primary-500/20 to-secondary-500/10 text-white border border-primary-500/30"
+                : "text-white/55 hover:text-white hover:bg-white/5 border border-transparent"
               }`
             }
           >
@@ -103,9 +102,8 @@ export default function Sidebar() {
     <>
       {/* Desktop sidebar */}
       <aside
-        className={`hidden lg:flex sticky top-0 h-screen shrink-0 flex-col border-r border-white/5 bg-bg-soft/80 backdrop-blur-xl transition-all duration-300 ${
-          sidebarOpen ? "w-64" : "w-[76px]"
-        }`}
+        className={`hidden lg:flex sticky top-0 h-screen shrink-0 flex-col border-r border-white/5 bg-bg-soft/80 backdrop-blur-xl transition-all duration-300 ${sidebarOpen ? "w-64" : "w-[76px]"
+          }`}
       >
         {content(!sidebarOpen)}
         <button

@@ -1,29 +1,22 @@
 import { useState } from "react";
 import { Link, useNavigate, useLocation } from "react-router-dom";
 import { motion } from "framer-motion";
-import { Mail, Lock, Eye, EyeOff, ArrowRight, Loader2, Zap } from "lucide-react";
+import { Mail, Lock, Eye, EyeOff, ArrowRight, Loader2 } from "lucide-react";
 import AuthLayout from "../../components/layout/AuthLayout";
 import { useAuthStore } from "../../store/authStore";
 import { useLanguage } from "../../hooks/useLanguage";
 import { ROLE_HOME } from "../../store/authStore";
 
-const DEMO = [
-  { role: "Student", email: "student@zukko.ai" },
-  { role: "Teacher", email: "teacher@zukko.ai" },
-  { role: "Manager", email: "manager@zukko.ai" },
-  { role: "Admin", email: "admin@zukko.ai" },
-];
-
 export default function Login() {
-  const navigate = useNavigate();
-  const location = useLocation();
-  const login = useAuthStore((s) => s.login);
-  const { t } = useLanguage();
+  const navigate  = useNavigate();
+  const location  = useLocation();
+  const login     = useAuthStore((s) => s.login);
+  const { t }     = useLanguage();
 
-  const [form, setForm] = useState({ email: "", password: "" });
-  const [show, setShow] = useState(false);
+  const [form, setForm]       = useState({ email: "", password: "" });
+  const [show, setShow]       = useState(false);
   const [loading, setLoading] = useState(false);
-  const [error, setError] = useState("");
+  const [error, setError]     = useState("");
 
   const submit = async (e) => {
     e?.preventDefault();
@@ -31,71 +24,67 @@ export default function Login() {
     setLoading(true);
     const res = await login(form);
     setLoading(false);
-    if (!res.ok) {
-      setError(res.error);
-      return;
-    }
-    const dest = location.state?.from?.pathname || ROLE_HOME[res.user.role];
+    if (!res.ok) { setError(res.error); return; }
+    const dest = location.state?.from?.pathname || ROLE_HOME[res.user.role] || "/";
     navigate(dest, { replace: true });
   };
-
-  const quickFill = (email) => setForm({ email, password: "1234" });
 
   return (
     <AuthLayout
       title={t("auth.welcomeBack")}
       subtitle={t("auth.loginSubtitle")}
-      footer={<>{t("auth.noAccount")} <Link to="/register" className="text-primary-400 hover:text-primary-300 font-medium">{t("common.signUp")}</Link></>}
+      footer={
+        <>{t("auth.noAccount")}{" "}
+          <Link to="/register" className="text-primary-400 hover:text-primary-300 font-medium">
+            {t("common.signUp")}
+          </Link>
+        </>
+      }
     >
       <form onSubmit={submit} className="space-y-4">
-        <InputField icon={Mail} type="email" placeholder={t("common.email")} value={form.email}
-          onChange={(v) => setForm({ ...form, email: v })} />
-        <InputField icon={Lock} type={show ? "text" : "password"} placeholder={t("common.password")} value={form.password}
+        <InputField
+          icon={Mail} type="email"
+          placeholder={t("common.email")}
+          value={form.email}
+          onChange={(v) => setForm({ ...form, email: v })}
+        />
+        <InputField
+          icon={Lock}
+          type={show ? "text" : "password"}
+          placeholder={t("common.password")}
+          value={form.password}
           onChange={(v) => setForm({ ...form, password: v })}
           trailing={
             <button type="button" onClick={() => setShow((s) => !s)} className="text-white/40 hover:text-white/70">
               {show ? <EyeOff className="h-4 w-4" /> : <Eye className="h-4 w-4" />}
             </button>
-          } />
+          }
+        />
 
         <div className="flex items-center justify-between text-sm">
           <label className="flex items-center gap-2 text-white/50 cursor-pointer">
             <input type="checkbox" className="rounded border-white/20 bg-white/5 text-primary-500 focus:ring-0" />
             {t("auth.rememberMe")}
           </label>
-          <Link to="/forgot-password" className="text-primary-400 hover:text-primary-300">{t("auth.forgotPassword")}</Link>
+          <Link to="/forgot-password" className="text-primary-400 hover:text-primary-300">
+            {t("auth.forgotPassword")}
+          </Link>
         </div>
 
         {error && (
-          <motion.p initial={{ opacity: 0 }} animate={{ opacity: 1 }} className="rounded-xl bg-rose-500/10 border border-rose-500/20 px-4 py-2.5 text-sm text-rose-400">
+          <motion.p initial={{ opacity: 0 }} animate={{ opacity: 1 }}
+            className="rounded-xl bg-rose-500/10 border border-rose-500/20 px-4 py-2.5 text-sm text-rose-400">
             {error}
           </motion.p>
         )}
 
         <button type="submit" disabled={loading} className="btn-primary w-full disabled:opacity-60">
-          {loading ? <Loader2 className="h-4 w-4 animate-spin" /> : <>{t("common.signIn")} <ArrowRight className="h-4 w-4" /></>}
+          {loading
+            ? <Loader2 className="h-4 w-4 animate-spin" />
+            : <>{t("common.signIn")} <ArrowRight className="h-4 w-4" /></>
+          }
         </button>
       </form>
-
-      {/* Demo accounts */}
-      <div className="mt-6">
-        <div className="flex items-center gap-2 text-xs text-white/40">
-          <Zap className="h-3.5 w-3.5 text-primary-400" /> {t("auth.quickLogin")} (1234)
-        </div>
-        <div className="mt-3 grid grid-cols-2 gap-2">
-          {DEMO.map((d) => (
-            <button
-              key={d.role}
-              type="button"
-              onClick={() => quickFill(d.email)}
-              className="rounded-xl glass px-3 py-2 text-left text-xs hover:border-primary-500/40 transition-colors"
-            >
-              <div className="font-medium text-white">{t(`roles.${d.role.toLowerCase()}`)}</div>
-              <div className="text-white/40 truncate">{d.email}</div>
-            </button>
-          ))}
-        </div>
-      </div>
     </AuthLayout>
   );
 }

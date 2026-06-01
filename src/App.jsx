@@ -14,21 +14,21 @@ import ForgotPassword from "./pages/auth/ForgotPassword";
 // Dashboard pages are code-split — loaded on demand per role
 const StudentOverview = lazy(() => import("./pages/student/Overview"));
 const AIChecker = lazy(() => import("./pages/student/AIChecker"));
-const StudentTests = lazy(() => import("./pages/student/Tests"));
-const StudentVocabulary = lazy(() => import("./pages/student/Vocabulary"));
-const StudentSpeaking = lazy(() => import("./pages/student/Speaking"));
-const StudentProgress = lazy(() => import("./pages/student/Progress"));
-const StudentHomework = lazy(() => import("./pages/student/Homework"));
-const StudentLeaderboard = lazy(() => import("./pages/student/Leaderboard"));
+// const StudentTests = lazy(() => import("./pages/student/Tests"));
+// const StudentVocabulary = lazy(() => import("./pages/student/Vocabulary"));
+// const StudentSpeaking = lazy(() => import("./pages/student/Speaking"));  
+// const StudentProgress = lazy(() => import("./pages/student/Progress"));
+// const StudentHomework = lazy(() => import("./pages/student/Homework"));
+// const StudentLeaderboard = lazy(() => import("./pages/student/Leaderboard"));
 const StudentProfile = lazy(() => import("./pages/student/Profile"));
 
 const TeacherStudents = lazy(() => import("./pages/teacher/Students"));
 const TeacherGroups = lazy(() => import("./pages/teacher/Groups"));
 const TeacherEssays = lazy(() => import("./pages/teacher/Essays"));
-const TeacherAssignments = lazy(() => import("./pages/teacher/Assignments"));
-const TeacherStatistics = lazy(() => import("./pages/teacher/Statistics"));
-const TeacherMessages = lazy(() => import("./pages/teacher/Messages"));
-const TeacherAttendance = lazy(() => import("./pages/teacher/Attendance"));
+// const TeacherAssignments = lazy(() => import("./pages/teacher/Assignments"));
+// const TeacherStatistics = lazy(() => import("./pages/teacher/Statistics"));
+// const TeacherMessages = lazy(() => import("./pages/teacher/Messages"));
+// const TeacherAttendance = lazy(() => import("./pages/teacher/Attendance"));
 
 const ManagerAnalytics = lazy(() => import("./pages/manager/Analytics"));
 const ManagerTeachers = lazy(() => import("./pages/manager/Teachers"));
@@ -82,12 +82,12 @@ export default function App() {
           <Route index element={<Navigate to="/app/overview" replace />} />
           <Route path="overview" element={<StudentOverview />} />
           <Route path="ai-checker" element={<AIChecker />} />
-          <Route path="tests" element={<StudentTests />} />
-          <Route path="vocabulary" element={<StudentVocabulary />} />
-          <Route path="speaking" element={<StudentSpeaking />} />
-          <Route path="progress" element={<StudentProgress />} />
-          <Route path="homework" element={<StudentHomework />} />
-          <Route path="leaderboard" element={<StudentLeaderboard />} />
+          {/* <Route path="tests" element={<StudentTests />} /> */}
+          {/* <Route path="vocabulary" element={<StudentVocabulary />} /> */}
+          {/* <Route path="speaking" element={<StudentSpeaking />} /> */}
+          {/* <Route path="progress" element={<StudentProgress />} /> */}
+          {/* <Route path="homework" element={<StudentHomework />} /> */}
+          {/* <Route path="leaderboard" element={<StudentLeaderboard />} /> */}
           <Route path="profile" element={<StudentProfile />} />
         </Route>
 
@@ -104,10 +104,10 @@ export default function App() {
           <Route path="students" element={<TeacherStudents />} />
           <Route path="groups" element={<TeacherGroups />} />
           <Route path="essays" element={<TeacherEssays />} />
-          <Route path="assignments" element={<TeacherAssignments />} />
-          <Route path="statistics" element={<TeacherStatistics />} />
-          <Route path="messages" element={<TeacherMessages />} />
-          <Route path="attendance" element={<TeacherAttendance />} />
+          {/* <Route path="assignments" element={<TeacherAssignments />} /> */}
+          {/* <Route path="statistics" element={<TeacherStatistics />} /> */}
+          {/* <Route path="messages" element={<TeacherMessages />} /> */}
+          {/* <Route path="attendance" element={<TeacherAttendance />} /> */}
         </Route>
 
         {/* ---------- Manager ---------- */}
