@@ -98,7 +98,8 @@
       "assignments": "Topshiriqlar",
       "statistics": "Statistika",
       "messages": "Xabarlar",
-      "attendance": "Davomat"
+      "attendance": "Davomat",
+      "prompts": "Mavzular"
     },
     "manager": {
       "analytics": "Tahlil",

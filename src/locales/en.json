@@ -98,7 +98,8 @@
       "assignments": "Assignments",
       "statistics": "Statistics",
       "messages": "Messages",
-      "attendance": "Attendance"
+      "attendance": "Attendance",
+      "prompts": "Prompts"
     },
     "manager": {
       "analytics": "Analytics",

@@ -32,6 +32,7 @@ export const NAV_CONFIG = {
       { to: "/teacher/students", label: "Students", tKey: "sidebar.teacher.students", icon: Users },
       { to: "/teacher/groups", label: "Groups", tKey: "sidebar.teacher.groups", icon: FolderKanban },
       { to: "/teacher/essays", label: "Essays", tKey: "sidebar.teacher.essays", icon: FileCheck2, badge: "2" },
+      { to: "/teacher/prompts", label: "Prompts", tKey: "sidebar.teacher.prompts", icon: PenLine },
       // { to: "/teacher/assignments", label: "Assignments", tKey: "sidebar.teacher.assignments", icon: ClipboardList },
       // { to: "/teacher/statistics", label: "Statistics", tKey: "sidebar.teacher.statistics", icon: BarChart3 },
       // { to: "/teacher/messages", label: "Messages", tKey: "sidebar.teacher.messages", icon: MessageSquare },

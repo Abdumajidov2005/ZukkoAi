@@ -140,6 +140,7 @@ export const writingApi = {
   getPrompt:          (id)          => api.get(`/api/writing/prompts/${id}/`),
   createPrompt:       (body)        => api.post("/api/writing/prompts/create/", body),
   updatePrompt:       (id, body)    => api.put(`/api/writing/prompts/${id}/update/`, body),
+  patchPrompt:        (id, body)    => api.patch(`/api/writing/prompts/${id}/update/`, body),
   deletePrompt:       (id)          => api.delete(`/api/writing/prompts/${id}/delete/`),
 
   submit:             (body)        => apiRequest("/api/writing/submit/", { method: "POST", body, timeout: ESSAY_TIMEOUT }),

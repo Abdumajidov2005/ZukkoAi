@@ -25,6 +25,7 @@ const StudentProfile = lazy(() => import("./pages/student/Profile"));
 const TeacherStudents = lazy(() => import("./pages/teacher/Students"));
 const TeacherGroups = lazy(() => import("./pages/teacher/Groups"));
 const TeacherEssays = lazy(() => import("./pages/teacher/Essays"));
+const TeacherPrompts = lazy(() => import("./pages/teacher/Prompts"));
 // const TeacherAssignments = lazy(() => import("./pages/teacher/Assignments"));
 // const TeacherStatistics = lazy(() => import("./pages/teacher/Statistics"));
 // const TeacherMessages = lazy(() => import("./pages/teacher/Messages"));
@@ -104,6 +105,7 @@ export default function App() {
           <Route path="students" element={<TeacherStudents />} />
           <Route path="groups" element={<TeacherGroups />} />
           <Route path="essays" element={<TeacherEssays />} />
+          <Route path="prompts" element={<TeacherPrompts />} />
           {/* <Route path="assignments" element={<TeacherAssignments />} /> */}
           {/* <Route path="statistics" element={<TeacherStatistics />} /> */}
           {/* <Route path="messages" element={<TeacherMessages />} /> */}

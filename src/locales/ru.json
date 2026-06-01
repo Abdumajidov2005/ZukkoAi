@@ -98,7 +98,8 @@
       "assignments": "Задания",
       "statistics": "Статистика",
       "messages": "Сообщения",
-      "attendance": "Посещаемость"
+      "attendance": "Посещаемость",
+      "prompts": "Темы"
     },
     "manager": {
       "analytics": "Аналитика",
